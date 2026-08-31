@@ -1,0 +1,2599 @@
+
+
+===== ARCHIVO: ENR 5.1.pdf =====
+--- página 1 ---
+AIP ENR 5.1 ­ 1
+COLOMBIA 28 NOV 2024
+ENR 5.1 ZONAS PROHIBIDAS, RESTRINGIDAS ENR 5.1 PROHIBITED, RESTRICTED AND
+Y PELIGROSAS DANGER AREAS.
+Todo espacio aéreo en el cual pudiera existir un peligro TO BE TRANSLATED
+potencial para las operaciones de aeronaves y todas las
+zonas sobre las que la operación de aeronaves civiles
+puede, por una u otra razón, ser restringida temporal ó
+permanentemente, se clasifican de conformidad con las
+siguientes tres clases de zonas, según han sido definidas
+por la OACI.
+1 ZONA PELIGROSA SK­D 1 DANGEROUS AREA SK­D
+1.1. Definición 1.1. TO BE TRANSLATED
+Espacio aéreo de dimensiones definidas en el cual pueden
+desplegarse en determinados momentos, actividades
+peligrosas para el vuelo de una aeronave. Se usa esta
+expresión únicamente cuando el peligro potencial para la
+aeronave no ha llevado a la designación del espacio aéreo
+como restringido o prohibido. La consecuencia de crear
+una zona peligrosa es la de advertir a los explotadores y/o
+pilotos de las aeronaves, que no está autorizado en ningún
+momento y/o bajo ninguna circunstancia, la operación de
+ninguna aeronave dentro del espacio aéreo designado,
+debido a las actividades de índole peligrosas que se
+desarrollan en éste espacio aéreo y que comprometerían
+la seguridad de sus aeronaves.
+1.2. Clase de espacio aéreo 1.2. TO BE TRANSLATED
+Espacios aéreos controlados de carácter permanente,
+vigilados en conjunto por la Fuerza Aérea Colombiana y
+por la U.A.E.A.C.
+1.3. Coordinaciones 1.3. TO BE TRANSLATED
+No se autoriza bajo ninguna circunstancia, la operación de
+ningún tipo de aeronaves en estas zonas.
+1.4. Implementación y publicación 1.4. TO BE TRANSLATED
+Las zonas peligrosas se implementan previa solicitud de la
+Fuerza Aérea Colombiana o de la U.A.E.A.C, y se publican
+a través de la AIP ­ Colombia.
+2 ZONA PROHIBIDA SK­P 2 PROHIBITED ZONE SK­P
+2.1. Definición 2.1. TO BE TRANSLATED
+Espacio aéreo de dimensiones definidas sobre el territorio
+o las aguas jurisdiccionales de un estado dentro del cual
+está prohibido el vuelo de aeronaves. Esta expresión se
+usa únicamente cuando el vuelo de las aeronaves civiles
+dentro del espacio aéreo designado no se permite en
+ningún momento ni en circunstancia alguna.
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 2 ---
+AIP ENR 5.1 ­ 2
+COLOMBIA 28 NOV 2024
+2.2. Clase de espacio aéreo 2.2. TO BE TRANSLATED
+Espacios aéreos controlados de carácter permanente. Los
+servicios de Control de Tránsito Aéreo al interior del área,
+son suministrados por la dependencia de control militar que
+tenga responsabilidad sobre citado espacio aéreo.
+2.3. Coordinaciones 2.3. TO BE TRANSLATED
+Las aeronaves que requieran ingresar a espacios aéreos
+prohibidos, deberán tramitar autorización al Comando de
+la Fuerza Aérea Colombiana (COFAC), con 96 horas de
+antelación a la hora prevista de inicio del vuelo.
+2.4. Implementación y publicación 2.4. TO BE TRANSLATED
+Las zonas prohibidas se implementan previa solicitud de la
+Fuerza Aérea Colombiana y se publican a través de la AIP
+­ Colombia
+3 ZONA RESTRINGIDA SK­R 3 RESTRICTED AREA SK­R
+3.1. Definición 3.1. TO BE TRANSLATED
+Espacio aéreo de dimensiones definidas sobre el territorio
+o las aguas jurisdiccionales de un estado, dentro del
+cual está restringido el vuelo de las aeronaves, de
+acuerdo con determinadas condiciones especificadas. Se
+usa esta expresión cuando el vuelo de una aeronave
+civil, dentro del espacio aéreo designado, no está
+absolutamente prohibido, pero se puede llevar a cabo
+únicamente, si se cumple con determinadas condiciones.
+Así, la prohibición del vuelo, excepto a ciertas horas
+especificadas, lleva a la designación del espacio aéreo
+como ZONA RESTRINGIDA, en la misma forma que lo
+sería en ciertas condiciones meteorológicas. La prohibición
+de los vuelos, a menos que se haya obtenido un permiso
+especial, lleva a la designación de una zona restringida.
+Sin embargo, las condiciones de vuelo
+impuestas como resultado de la aplicación de los métodos
+y procedimientos del reglamento del Aire o de los Servicios
+de Tránsito Aéreo (por ejemplo cumplimiento con
+las alturas mínimas de seguridad o con las disposiciones
+dimanantes del establecimiento de un espacio aéreo
+controlado, no constituyen condiciones que exigen la
+designación de una zona como restringida).
+3.2. Clase de espacio aéreo 3.2. TO BE TRANSLATED
+Espacios aéreos controlados de carácter permanente. Los
+servicios de Control de Tránsito Aéreo al interior del área,
+son suministrados por la dependencia de control militar que
+tenga responsabilidad sobre citado espacio aéreo.
+3.3. Coordinaciones 3.3. TO BE TRANSLATED
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 3 ---
+AIP ENR 5.1 ­ 3
+COLOMBIA AIRAC effective date 16 APR 2026
+Las aeronaves que requieran ingresar a espacios aéreos
+restringidos, deberán tramitar autorización a la Jefatura
+de Operaciones Aéreas de la Fuerza Aérea Colombiana
+(JOA), con 72 horas de antelación a la hora prevista de
+inicio del vuelo.
+3.4. Implementación y publicación 3.4. TO BE TRANSLATED
+Las zonas restringidas se implementan previa solicitud de
+la Fuerza Aérea Colombiana y se publican a través de la
+AIP ­ Colombia.
+4 DESIGNACIÓN PARA ZONAS PELIGROSAS, 4 DESIGNATION FOR DANGEROUS,
+PROHIBIDAS Y RESTRINGIDAS PROHIBITED AND RESTRICTED AREAS
+Cada zona se numera y se usa una serie única de números TO BE TRANSLATED
+para todas las zonas, independiente de su tipo, a fin de
+asegurar que nunca se duplique el número.
+Cada zona es tan pequeña como sea posible y está TO BE TRANSLATED
+contenida dentro de los límites geométricos sencillos, tales
+como un círculo, un cuadrado, etc.
+La clase de zona en cuestión se indica mediante la letra TO BE TRANSLATED
+D para peligrosa, P para prohibida, R para restringida,
+precedida por las letras de nacionalidad. Por ejemplo, se
+asignan números y letras a las zonas en la forma siguiente:
+D1, P2, D3, R4, R5, P6, etc.
+Cada zona se describe en la tabla que aparece en RAC TO BE TRANSLATED
+5­1.3, donde se indican sus límites laterales y verticales, el
+tipo de restricción o peligro en cuestión, las horas en que
+se aplica y otra información pertinente.
+Esas zonas también aparecen en las cartas de TO BE TRANSLATED
+radionavegación, utilizando los símbolos descritos en
+5.1­2.
+4.1. Señales visuales empleadas para advertir a una 4.1. TO BE TRANSLATED
+aeronave no autorizada que se encuentra volando en una
+zona restringida, prohibida o peligrosa, o que está a punto
+de entrar en ella.
+De día y de noche una serie de proyectiles disparados TO BE TRANSLATED
+desde el suelo a intervalos de 10 segundos, que al explotar
+produzcan luces o estrellas rojas y verdes, indicarán a toda
+aeronave no autorizada que está volando en una zona
+restringida, prohibida o peligrosa, o que está a punto de
+entrar en ella y que la aeronave ha de tomar las medidas
+necesarias para remediar la situación (Apéndice A del
+Anexo 2 de OACI, apartes).
+ZONA PELIGROSA
+DANGER AREAS
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME INFERIOR / SUPERIOR REMARKS
+LOWER / UPPER LIMIT
+1 2 3
+SKD36 CHIA GND / 10000 FT AGL
+AIS COLOMBIA A 71/26
+--- página 4 ---
+AIP ENR 5.1 ­ 4
+COLOMBIA AIRAC effective date 16 APR 2026
+ZONA PELIGROSA
+DANGER AREAS
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME INFERIOR / SUPERIOR REMARKS
+LOWER / UPPER LIMIT
+1 2 3
+SKD37 BARRANCABERMEJA GND / 4500 FT AGL
+SKD41 MANIZALES GND / 20000 FT AGL
+SKD43 FLORENCIA GND / 6500 FT AGL
+SKD46 MELGAR GND / 8000 FT AGL
+ZONA PROHIBIDAS
+PROHIBITED AREAS
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME INFERIOR / SUPERIOR REMARKS
+LOWER / UPPER LIMIT
+1 2 3
+SKP28 TRES ESQUINAS GND / 9000 FT AGL
+SKP29 APIAY­SKP29 GND / 10500 FT AMSL
+SKP30 TOLEMAIDA GND / 8500 FT AMSL
+SKP31 PALANQUERO GND / 14000 FT AMSL
+SKP32 SKP32 GND / 8000 FT AMSL
+SKP35 CHIA GND / 12000 FT AMSL
+SKP48 MARANDUA GND / 12500 FT AMSL
+ZONAS RESTRINGIDAS
+RESTRICTED AREAS
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME INFERIOR / SUPERIOR REMARKS
+LOWER / UPPER LIMIT
+1 2 3
+SKR1 BARRANQUILLA 500 FT AMSL / 3500 FT AMSL
+SKR5 SUR SKR5 SUR GND / 8000 FT AMSL
+SKR5 N SKR5 NORTE GND / 6500 FT AMSL
+SKR5 NC SKR5 NORTE ­ CORREDOR GND / 5000 FT AMSL
+SKR6 LA MACARENA GND / 17500 FT AGL
+SKR7 VILLAVICENCIO 9000 FT AMSL / FL190
+SKR8 RIOHACHA GND / 7000 FT AMSL
+SKR9 MELGAR GND / 11500 FT AMSL
+SKR10 PALANQUERO GND / UNL
+SKR11 BARRANQUILLA 9000 FT AMSL / FL190
+SKR12 APIAY­SKR12 10500 FT AMSL /
+17500 FT AMSL
+SKR16 COVEÑAS GND / 4500 FT AMSL
+SKR17 CARTAGENA GND / 2000 FT AMSL
+SKR18 JUANCHACO GND / 5500 FT AMSL
+SKR19 MEDELLIN GND / 7500 FT AMSL
+SKR23 BARRANQUILLA 5000 FT AMSL / 18000 FT AMSL
+SKR24 BARRANQUILLA 10000 FT AMSL /
+18000 FT AMSL
+AIS COLOMBIA A 71/26
+--- página 5 ---
+AIP ENR 5.1 ­ 5
+COLOMBIA AIRAC effective date 16 APR 2026
+ZONAS RESTRINGIDAS
+RESTRICTED AREAS
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME INFERIOR / SUPERIOR REMARKS
+LOWER / UPPER LIMIT
+1 2 3
+SKR25 MATUNTUGO GND / 5000 FT AMSL
+SKR26 SKR26 GND / 12500 FT AMSL
+SKR27 TRES ESQUINAS GND / 9000 FT AMSL
+SKR33 TUNJA GND / 13000 FT AMSL
+SKR39 GIRARDOT GND / 2500 FT AMSL
+SKR40 BOGOTA GND / 18500 FT AMSL
+SKR44 AMAZONIA PARQUES GND / 8500 FT AMSL
+NACIONALES
+SKR45 CUNDINAMARCA GND / 1000 FT AMSL
+SKR47 RIOHACHA GND / 6500 FT AMSL
+SKR49 TIBU GND / 2000 FT AMSL
+SKR50 CUCUTA GND / 18000 FT AGL
+AIS COLOMBIA A 71/26
+
+===== ARCHIVO: ENR 5.2.pdf =====
+--- página 1 ---
+AIP ENR 5.2 ­ 1
+COLOMBIA AIRAC effective date 22 JAN 2026
+ENR 5.2 MANIOBRAS MILITARES Y ZONAS ENR 5.2 MILITARY EXERCISE AND TRAINING
+DE INSTRUCCIÓN MILITAR Y ZONA DE AREAS AND AIR DEFENSE IDENTIFICATION
+IDENTIFICACIÓN DE DEFENSA AÉREA (ADIZ) ZONE (ADIZ)
+1 ZONA DE ENTRENAMIENTO SKE 1 TRAINING AREA SKE
+1.1 Definición 1.1 Definition
+Espacio aéreo de dimensiones definidas sobre el territorio TO BE TRANSLATED
+o las aguas jurisdiccionales del estado colombiano,
+destinado a mantener capacitadas las tripulaciones Civiles
+y Militares respectivamente a través de procesos de
+actualización, estandarización y autonomía.
+1.2 Áreas de entrenamiento militar (Zonas Flexibles 1.2 TO BE TRANSLATED
+FUA)
+Espacios aéreos controlados de uso flexible (FUA), de TO BE TRANSLATED
+activación y desactivación a solicitud de la FAC, en
+concordancia a lo establecido en los RAC Parte 5, Capítulo
+III, numeral 5.3 Reglas Generales, ítem 5.3.1.10.1 Zonas
+Flexibles (FUA). Durante los periodos de activación de
+las zonas de entrenamiento, los servicios ATC al interior
+del área son suministrados por la dependencia de control
+militar que tenga responsabilidad sobre citado espacio
+aéreo.
+1.3 Coordinaciones 1.3 TO BE TRANSLATED
+La coordinación para la utilización de las zonas de TO BE TRANSLATED
+entrenamiento se realiza a nivel regional, entre las
+dependencias ATC civiles y militares involucradas.
+1.4 Implementación y publicación 1.4 TO BE TRANSLATED
+Las zonas de entrenamiento requieren carta de acuerdo TO BE TRANSLATED
+operacional y se implementa mediante coordinación
+directa entre la Dirección de Operaciones de Navegación
+Aérea (DONA) de la U.A.E.A.C. y la Dirección de
+Navegación Aérea (DINAV) de la Fuerza Aeroespacial
+Colombiana.
+Su publicación se realiza a través de la AIP­Colombia.
+2 ZONA DE OPERACIONES MILITARES 2 TO BE TRANSLATED
+(Military Operation Airspace) MOA
+2.1 Definición 2.1 TO BE TRANSLATED
+Espacio aéreo de carácter temporal, de dimensiones TO BE TRANSLATED
+definidas sobre el territorio o las aguas jurisdiccionales
+de un estado, reservado para el vuelo de aeronaves en
+desarrollo de actividades militares y de defensa. Se usa
+esta expresión cuando el vuelo de aeronaves militares,
+AIS COLOMBIA A 70/26
+--- página 2 ---
+AIP ENR 5.2 ­ 2
+COLOMBIA AIRAC effective date 22 JAN 2026
+dentro del espacio aéreo designado, está condicionado a
+determinadas horas y bajo condiciones específicas.
+2.2 Clase de espacio aéreo 2.2 TO BE TRANSLATED
+Espacios aéreos controlados de uso flexible (FUA), de TO BE TRANSLATED
+activación y desactivación a solicitud de la FAC, en
+concordancia a lo establecido en los RAC Parte 5, Capítulo
+III, numeral 5.3 Reglas Generales, ítem 5.3.1.10.1 Zonas
+Flexibles (FUA).
+Los servicios de Control de Tránsito Aéreo al interior del
+área, son suministrados por la dependencia de control
+militar que tenga responsabilidad sobre citado espacio
+aéreo.
+2.3 Coordinaciones 2.3 TO BE TRANSLATED
+Durante la activación de este tipo de espacios aéreos, TO BE TRANSLATED
+las dependencias ATC de la Aeronáutica Civil (UAEAC)
+desviarán las aeronaves, a fin de evitar el sobrevuelo o
+ingreso inadvertido al espacio aéreo designado.
+2.4 Implementación y publicación 2.4 TO BE TRANSLATED
+Las zonas de operaciones militares se implementan TO BE TRANSLATED
+mediante coordinación directa entre el Comando de
+Operaciones Aéreas y Espaciales (COAES) de la Fuerza
+Aeroespacial Colombiana y la Dirección de Operaciones de
+Navegación Aérea (DONA) de la U.A.E.A.C. Su publicación
+está sujeta al tipo de operación y la duración del mismo.
+Con el objetivo de agilizar la operación de la aviación de TO BE TRANSLATED
+Estado y permitir la operación de aeronaves comerciales
+y de aviación general, la coordinación para la activación
+y desactivación de este tipo de espacios aéreos, puede
+hacerse directamente entre los supervisores del ACC
+– BOG o ACC – BAQ y el supervisor de Tránsito
+Aéreo del Centro de Comando y Control de la Fuerza
+Aeroespacial Colombiana (CCOFA), Consola aeronáutica
+o la dependencia de control que sea designada para tal
+efecto.
+3 DESIGNACIÓN PARA ZONAS DE 3 DESIGNATION FOR CIVIL AND MILITARY
+ENTRENAMIENTO E INSTRUCCIÓN CIVIL Y TRAINING AND INSTRUCTION ZONES
+MILITAR
+Cada zona es tan pequeña como sea posible y está TO BE TRANSLATED
+contenida dentro de los límites geométricos sencillos, tales
+como un círculo, un cuadrado, etc.
+La clase de zona en cuestión se indica mediante la TO BE TRANSLATED
+letra E para zona de entrenamiento o MOA para zona
+de operaciones militares, precedida por las letras de
+nacionalidad, y se enumera independientemente. Por
+ejemplo, se asignan números y letras a las zonas en la
+forma siguiente: E1, E2, E3; MOA1, MOA2, MOA3, etc.
+Cada zona de entrenamiento civil y militar se describe en TO BE TRANSLATED
+la tabla que se relaciona en ENR 5.2
+AIS COLOMBIA A 70/26
+--- página 3 ---
+AIP ENR 5.2 ­ 3
+COLOMBIA AIRAC effective date 22 JAN 2026
+Las Cartas de Zonas de entrenamiento militar y las Zonas
+de operaciones militares MOA´S se incluirán posterior
+siguientes listados (ENR 5.2)
+Las Cartas de Zonas de entrenamiento civil se incluirán en TO BE TRANSLATED
+respectivas cartas de cada aeropuerto correspondiente a
+las frecuencias de responsabilidad.
+Adicional, estas zonas se grafican en las cartas de
+radionavegación.
+ZONAS DE ENTRENAMIENTO
+TRAINING AREAS
+LÍMITES
+OBSERVACIONES
+IDENTIFICACIÓN – SUPERIOR /
+HORA DE ACT
+NOMBRE /TIPO DE ZONA INFERIOR
+REMARKS
+IDENTIFICATION ­ NAME /ZONE TYPE UPPER /
+HOURS OF ACTIVITY
+LOWER LIMIT
+1 2 3
+SKE1 Yopal / Miltar/Military 14000 FT H24
+Administrado y controlado por la Fuerza
+8000 FT
+Aeroespacial
+colombiana (FAC)
+Airspace managed and controlled by the
+Colombian Aerospace Force (FAC)
+SKE3 Barranquilla / Civil 3000 FT Horas diurnas y en condiciones VMC
+500 FT AGL
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKBQ ­ Zona de entrenamiento 1
+SKE4 Cordoba (San Bernardo del viento) / 3500 FT Horas diurnas y en condiciones VMC
+Civil
+500 FT AGL
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKBQ ­ Zona de entrenamiento 2
+SKE6 Barranquilla / Miltar/Military FL240 H24
+Administrado y controlado por la Fuerza
+5000 FT
+Aeroespacial colombiana (FAC).
+Airspace managed and controlled by the
+Colombian Aerospace Force (FAC)
+SKE7 Barranquilla / Miltar/Military FL240 H24
+Administrado y controlado por la Fuerza
+10000 FT
+Aeroespacial colombiana (FAC).
+Airspace managed and controlled by the
+Colombian Aerospace Force (FAC)
+SKE8 Riohacha / Miltar/Military FL240 H24
+Administrado y controlado por la Fuerza
+12000 FT
+Aeroespacial colombiana (FAC).
+Airspace managed and controlled by the
+Colombian Aerospace Force (FAC)
+SKE9 Rionegro / Miltar/Military 7500 FT H24
+Administrado y controlado por la Fuerza
+GND
+Aeroespacial colombiana (FAC).
+Airspace managed and controlled by the
+Colombian Aerospace Force (FAC)
+SKE10 Pereira / Civil 7500 FT Horas diurnas
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKPE ­ Zona de entrenamiento 1
+AIS COLOMBIA A 70/26
+--- página 4 ---
+AIP ENR 5.2 ­ 4
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONAS DE ENTRENAMIENTO
+TRAINING AREAS
+LÍMITES
+OBSERVACIONES
+IDENTIFICACIÓN – SUPERIOR /
+HORA DE ACT
+NOMBRE /TIPO DE ZONA INFERIOR
+REMARKS
+IDENTIFICATION ­ NAME /ZONE TYPE UPPER /
+HOURS OF ACTIVITY
+LOWER LIMIT
+1 2 3
+SKE11 Pereira / Civil 5500 FT Horas diurnas
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKPE ­ Zona de entrenamiento 1
+SKE12 Pereira / Civil 5500 FT Horas diurnas
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKPE ­ Zona de entrenamiento 2
+SKE13 Pereira / Civil 7500 FT Horas diurnas
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKPE ­ Zona de entrenamiento 2
+SKE15 Cali / Civil 5000 FT Horas diurnas
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKCL ­ Zona de entrenamiento 1
+SKE16 Cali / Civil 5000 FT Horas diurnas
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKCL ­ Zona de entrenamiento 1
+SKE17 Cali / Civil 5000 FT Horas diurnas
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKCL ­ Zona de entrenamiento 1
+SKE19 Girardot / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKGI ­ Zona de entrenamiento
+SKE20 Girardot / Civil 5500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKGI ­ Zona de entrenamiento
+SKE21 Girardot / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKGI ­ Zona de entrenamiento
+SKE22 Girardot / Civil 5500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKGI ­ Zona de entrenamiento
+SKE23 Guaymaral / Civil 11000 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKGY ­ Zona de entrenamiento
+1
+SKE24 Guaymaral / Civil 11000 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AIS COLOMBIA A 70/26
+--- página 5 ---
+AIP ENR 5.2 ­ 5
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONAS DE ENTRENAMIENTO
+TRAINING AREAS
+LÍMITES
+OBSERVACIONES
+IDENTIFICACIÓN – SUPERIOR /
+HORA DE ACT
+NOMBRE /TIPO DE ZONA INFERIOR
+REMARKS
+IDENTIFICATION ­ NAME /ZONE TYPE UPPER /
+HOURS OF ACTIVITY
+LOWER LIMIT
+1 2 3
+AD 2 ­ SKGY ­ Zona de entrenamiento
+1
+SKE25 Guaymaral / Civil 11000 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKGY ­ Zona de entrenamiento 2
+Presencia planeadores procedentes
+aeródromo
+Las Acacias frecuencia operaciones 122.9
+Mhz.
+Ejercer precaución Aeronaves ingresando
+por
+debajo de 11500FT previo permiso ATC
+SKE26 Ibague / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKIB ­ Zona de entrenamiento 1
+SKE27 Ibague / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKIB ­ Zona de entrenamiento 1
+SKE28 Ibague / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKIB ­ Zona de entrenamiento 2
+SKE29 Ibague / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKIB ­ Zona de entrenamiento 2
+SKE30 Mariquita / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKQU ­ Zona de entrenamiento
+SKE31 Mariquita / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKQU ­ Zona de entrenamiento
+SKE32 Mariquita / Civil 4500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKQU ­ Zona de entrenamiento
+SKE33 Medellin / Civil 9500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKMD ­ Zona de entrenamiento
+SKE34 Medellin / Civil 7500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKMD ­ Zona de entrenamiento
+AIS COLOMBIA A 70/26
+--- página 6 ---
+AIP ENR 5.2 ­ 6
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONAS DE ENTRENAMIENTO
+TRAINING AREAS
+LÍMITES
+OBSERVACIONES
+IDENTIFICACIÓN – SUPERIOR /
+HORA DE ACT
+NOMBRE /TIPO DE ZONA INFERIOR
+REMARKS
+IDENTIFICATION ­ NAME /ZONE TYPE UPPER /
+HOURS OF ACTIVITY
+LOWER LIMIT
+1 2 3
+SKE35 Medellin / Civil 8500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKMD ­ Zona de entrenamiento
+SKE36 Medellin / Civil 8500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKMD ­ Zona de entrenamiento
+SKE39 Villavicencio / Civil 3500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKVV ­ Zona de entrenamiento
+SKE40 Villavicencio / Civil 3500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKVV ­ Zona de entrenamiento
+SKE41 Cali / Civil 6500 FT H24 Operación civil entre la salida y puesta
+del sol en VMC
+GND
+Operación militar 24 horas (activación y
+desactivación a solicitud de la FAC)
+H24
+Unidad administrativa Especial de
+Aeronáutica Civil
+Operador: Aerocali S.A.
+SKE42 Cali / Civil 6500 FT H24 Operación civil entre la salida y puesta
+del sol en VMC
+GND
+Operación militar 24 horas (activación y
+desactivación a solicitud de la FAC)
+H24
+Unidad administrativa Especial de
+Aeronáutica Civil
+Operador: Aerocali S.A.
+SKE45 Guaymaral / Civil 10000 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKGY­ Zona de entrenamiento
+1
+SKE46 Guaymaral / Civil 11000 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKGY­ Zona de entrenamiento
+2
+SKE47 Bucaramanga / Civil 5500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKBG ­ Zona de entrenamiento
+SKE48 Bucaramanga / Civil 5500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AIS COLOMBIA A 70/26
+--- página 7 ---
+AIP ENR 5.2 ­ 7
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONAS DE ENTRENAMIENTO
+TRAINING AREAS
+LÍMITES
+OBSERVACIONES
+IDENTIFICACIÓN – SUPERIOR /
+HORA DE ACT
+NOMBRE /TIPO DE ZONA INFERIOR
+REMARKS
+IDENTIFICATION ­ NAME /ZONE TYPE UPPER /
+HOURS OF ACTIVITY
+LOWER LIMIT
+1 2 3
+AD 2 ­ SKBG ­ Zona de entrenamiento
+SKE49 Bucaramanga / Civil 5500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKBG ­ Zona de entrenamiento
+SKE50 Neiva / Civil 8500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+AD 2 ­ SKNV ­ Zona de entrenamiento
+SKE51 Pereira / Civil 7500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+SKE52 Florencia / Civil 5500 FT Horas diurnas y en condiciones VMC
+GND
+Zona de entrenamiento para instrucción civil
+SKE72 Barranquilla / Civil 3500 FT Horas diurnas y en condiciones VMC
+1000 FT
+Zona de entrenamiento para instrucción civil
+SKE73 Apiay / Miltar/Military 10000 FT H24
+Administrado y controlado por la Fuerza
+5000 FT
+Aeroespacial Colombiana (FAC)
+Airspace managed and controlled by the
+Colombian Aerospace Force (FAC)
+SKE74 Apiay / Miltar/Military 10000 FT H24
+Administrado y controlado por la Fuerza
+5000 FT
+Aeroespacial Colombiana (FAC)
+Airspace managed and controlled by the
+Colombian Aerospace Force (FAC)
+SKE75 Apiay / Miltar/Military 10000 FT H24
+Administrado y controlado por la Fuerza
+5000 FT
+Aeroespacial Colombiana (FAC)
+Airspace managed and controlled by the
+Colombian Aerospace Force (FAC)
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+MOA 1 CUCUTA 12000 FT H24
+1. Espacio aéreo administrado y controlado
+11000 FT
+por la Fuerza Aeroespacial Colombiana
+2. El control de activación y desactivación
+del área es a solicitud de la Fuerza
+Aeroespacial Colombiana
+AIS COLOMBIA A 70/26
+--- página 8 ---
+AIP ENR 5.2 ­ 8
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los límites verticales y
+laterales del área sin la devida autorización
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the Colombian
+Aerospace Force
+3.Overflight of all types of aircraft within the
+vertical and lateral limits of the area without
+proper authorization is restricted.
+MOA 2 SARAVENA 8000 FT H24
+1. Espacio aéreo administrato y controlado
+7000 FT
+por la fuerza Aeroespacial Colombiana.
+2. El control de activación y desactivación
+del área es a solicitud de la Fuerza
+Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace administered and controlled by
+the Colombian Aerospace Force
+2. The activation and deactivation control of
+the area is at the request of the Colombian
+Aerospace Force.
+3. The overflight of all types of aircraft within
+the vertical and lateral limits of the area
+without the proper authorization is restricted.
+MOA 5 TIBU 6000 FT H24
+1. Espacio aéreo administrato y controlado
+GND
+por la fuerza Aeroespacial Colombiana.
+2. El control de activación y desactivación
+del área es a solicitud de la Fuerza
+Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace administered and controlled by
+the Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the Colombian
+Aerospace Force.
+3. The overflight of all types of aircraft within
+the vertical and lateral limits of the area
+without the proper authorization is restricted.
+MOA 7 PUERTO ASIS 5500 FT H24
+1. Espacio aéreo administrato y controlado
+GND
+por la fuerza Aeroespacial Colombiana.
+2. El control de activación y desactivación
+del área es a solicitud de Orito
+AIS COLOMBIA A 70/26
+--- página 9 ---
+AIP ENR 5.2 ­ 9
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+3. Durante la activación el ingreso al área es
+autorizado por la Torre de Control Tres de
+Mayo.
+4. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace administered and controlled by
+the Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of Orito.
+3. During activation, entry into the area is
+authorized by the Tres de Mayo Control
+Tower.
+4. Overflight of all types of aircraft within the
+vertical and lateral limits of the area without
+proper authorization is restricted.
+MOA 8 PUERTO ASIS 7500 FT H24
+H24 1. Airspace administered and controlled
+5500 FT
+by the Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of Orito.
+3. During activation, entry into the area is
+authorized by the Tres de Mayo Control
+Tower.
+4. Overflight of all types of aircraft within the
+vertical and lateral limits of the area without
+proper authorization is restricted.
+1. Espacio aéreo administrato y controlado
+por la fuerza Aeroespacial Colombiana.
+2. El control de activación y desactivación
+del área es a solicitud de Orito
+3. Durante la activación el ingreso al área es
+autorizado por la Torre de Control Tres de
+Mayo.
+4. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los límites verticales y
+laterales del área sin la debida autorización.
+MOA 9 SAN JOSE DEL GUAVIARE 7500 FT
+6500 FT
+MOA 10 LA MACARENA 8500 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+5500 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+AIS COLOMBIA A 70/26
+--- página 10 ---
+AIP ENR 5.2 ­ 10
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 11 LA URIBE 9500 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+7500 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 12 SAN VICENTE DEL CAGUAN 8500 FT
+6500 FT
+MOA 13 TIBU 10000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+6000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 14 TIBU 11000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+10000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+AIS COLOMBIA A 70/26
+--- página 11 ---
+AIP ENR 5.2 ­ 11
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 15 TIBU 13000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+11000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 16 SARAVENA 8000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+7000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 17 TAME 8000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+7000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+AIS COLOMBIA A 70/26
+--- página 12 ---
+AIP ENR 5.2 ­ 12
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 18 TAME 9000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+8000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 19 TAME 9000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+7000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 20 SARAVENA 7000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+5000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+AIS COLOMBIA A 70/26
+--- página 13 ---
+AIP ENR 5.2 ­ 13
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+MOA 21 SARAVENA 7000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial .
+5000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 22 TAME 7000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+5000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+MOA 24 TAME 9000 FT 1. Espacio Aéreo administrado y controlado
+por la Fuerza Aeroespacial Colombiana.
+7000 FT
+2. El control de activacion y desactivacion
+del área es a solicitud de la
+Fuerza Aeroespacial Colombiana.
+3. Se restringe el sobrevuelo de todo tipo de
+aeronaves dentro de los Límites verticales y
+laterales del área sin la debida autorización.
+1. Airspace managed and controlled by the
+Colombian Aerospace Force.
+2. The activation and deactivation control of
+the area is at the request of the
+Colombian Aerospace Force.
+3. The overflight of all types of aircraft is
+restricted within the vertical and lateral limits
+of the area without proper authorization.
+AIS COLOMBIA A 70/26
+--- página 14 ---
+AIP ENR 5.2 ­ 14
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+MOA 25 TAME 9000 FT 1. El control de activación y desactivación de
+la MOA a solicitud de la Fuerza Aeroespacial
+7000 FT
+Colombiana.
+2. No se autoriza el sobrevuelo de
+aeronaves dentro de la MOA, sin
+coordinación de la Fuerza Aeroespacial
+Colombiana.
+3. No se autoriza el uso del área sin
+comunicación efectiva entre la tripulación del
+ART y la dependencia de control pertinente.
+4. Es responsabilidad de la tripulación del
+ART mantener la separación reglamentaria
+con otras aeronaves.
+1. The activation and deactivation of the
+MOA shall be controlled upon request of the
+Colombian Aerospace Force.
+2. Overflight of aircraft within the MOA is not
+authorized without prior coordination with the
+Colombian Aerospace Force.
+3. Use of the area is not authorized unless
+effective communication is established
+between the ART crew and the appropriate
+ATC unit.
+4. It is the responsibility of the ART crew to
+maintain the required separation from other
+aircraft.
+MOA 26 TAME 9000 FT
+7000 FT
+MOA 27 CUCUTA 9000 FT
+7000 FT
+MOA 28 CUCUTA 14000 FT
+7000 FT
+MOA 29 CUCUTA 9000 FT
+7000 FT
+MOA 30 CUCUTA 9000 FT
+7000 FT
+MOA 31 CUCUTA 12000 FT
+7000 FT
+MOA 32 CUCUTA 9000 FT
+7000 FT
+MOA 33 CUCUTA 12000 FT
+7000 FT
+MOA 34 CUCUTA 9000 FT
+7000 FT
+MOA 35 CUCUTA 14000 FT
+AIS COLOMBIA A 70/26
+--- página 15 ---
+AIP ENR 5.2 ­ 15
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+7000 FT
+MOA 36 CUCUTA 14000 FT
+7000 FT
+MOA 37 CUCUTA 14000 FT
+7000 FT
+MOA 38 CUCUTA 14000 FT
+7000 FT
+MOA 39 TUMACO 3000 FT
+GND
+MOA 40 TUMACO 8000 FT
+3000 FT
+MOA 41 GUAPI 8000 FT
+4000 FT
+MOA 42 GUAPI 8000 FT
+4000 FT
+MOA 43 GUAPI 8000 FT
+4000 FT
+MOA 44 TUMACO 8000 FT
+4000 FT
+MOA 45 TUMACO 8000 FT
+4000 FT
+MOA 46 GUAPI 8000 FT
+4000 FT
+MOA 47 GUAPI 8000 FT
+4000 FT
+MOA 48 CORDOBA 7000 FT
+5000 FT
+MOA 49 CAREPA 7000 FT
+5500 FT
+MOA 50 CAREPA 7000 FT
+6000 FT
+MOA 51 CAREPA 11000 FT
+2000 FT
+MOA 52 CAREPA 11000 FT
+2000 FT
+MOA 53 CAREPA 11000 FT
+2000 FT
+MOA 54 CAREPA 11000 FT
+AIS COLOMBIA A 70/26
+--- página 16 ---
+AIP ENR 5.2 ­ 16
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+7000 FT
+MOA 55 CAREPA 10000 FT
+5000 FT
+MOA 56 CAREPA 9000 FT
+7000 FT
+MOA 57 CAREPA 11000 FT
+3000 FT
+MOA 58 CAREPA 10000 FT
+9000 FT
+MOA 59 OTU 9000 FT
+3000 FT
+MOA 60 OTU 10000 FT
+6000 FT
+MOA 61 BARRANCABERMEJA 9000 FT
+5000 FT
+MOA 62 BUCARAMANGA 10000 FT
+9000 FT
+MOA 63 BUCARAMANGA 10000 FT
+8000 FT
+MOA 64 BUCARAMANGA 10000 FT
+8000 FT
+MOA 65 BUCARAMANGA 10000 FT AMSL H24 (Activación y Desactivación)
+H24
+8000 FT AMSL
+MOA 66 BUCARAMANGA 10000 FT AMSL H24 (Activación y Desactivación)
+H24
+8000 FT AMSL
+1. El control de activación y desactivación de
+la MOA a solicitud de la Fuerza Aeroespacial
+Colombiana.
+2. No se autoriza el sobrevuelo de
+aeronaves dentro de la MOA, sin
+coordinación de la Fuerza Aeroespacial
+Colombiana.
+3. No se autoriza el uso del área sin
+comunicación efectiva entre la tripulación del
+ART y la dependencia de control pertinente.
+4. Es responsabilidad de la tripulación del
+ART mantener la separación reglamentaria
+con aeronaves.
+1. The activation and deactivation of the
+MOA shall be controlled upon request of the
+Colombian Aerospace Force.
+AIS COLOMBIA A 70/26
+--- página 17 ---
+AIP ENR 5.2 ­ 17
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+2. Overflight of aircraft within the MOA is not
+authorized without prior coordination with the
+Colombian Aerospace Force.
+3. Use of the area is not authorized unless
+effective communication is established
+between the ART crew and the appropriate
+ATC unit.
+4. It is the responsibility of the ART crew to
+maintain the required separation from other
+aircraft.
+MOA 67 BUCARAMANGA 10000 FT AMSL H24 (Activación y Desactivación)
+H24
+8000 FT AMSL
+MOA 68 BUCARAMANGA 11000 FT AMSL H24 (Activación y Desactivación)
+H24
+9000 FT AMSL
+MOA 69 BUCARAMANGA 13000 FT AMSL H24 (Activación y Desactivación)
+H24
+11000 FT AMSL
+MOA 70 BUCARAMANGA 13000 FT AMSL H24 (Activación y Desactivación)
+H24
+11000 FT AMSL
+MOA 71 BUCARAMANGA 15000 FT AMSL H24 (Activación y Desactivación)
+H24
+13000 FT AMSL
+MOA 72 CUCUTA 15000 FT AMSL H24 (Activación y Desactivación)
+H24
+12000 FT AMSL
+MOA 73 CUCUTA 12000 FT AMSL H24 (Activacaión y Desactivación)
+H24
+11000 FT AMSL
+MOA 74 CUCUTA 11000 FT
+8000 FT
+MOA 75 CUCUTA 10000 FT
+6000 FT
+MOA 76 CUCUTA 12500 FT
+10500 FT
+MOA 77 CUCUTA 6500 FT
+5500 FT
+MOA 78 CUCUTA 8500 FT
+5500 FT
+MOA 79 CUCUTA 8500 FT
+5500 FT
+MOA 80 YOPAL 9000 FT
+7000 FT
+MOA 81 YOPAL 9000 FT
+7000 FT
+MOA 82 YOPAL 9000 FT
+AIS COLOMBIA A 70/26
+--- página 18 ---
+AIP ENR 5.2 ­ 18
+COLOMBIA AIRAC effective date 22 JAN 2026
+ZONA DE OPERACIONES MILITARES
+MILITARY OPERATIONS AREA
+IDENTIFICACIÓN – NOMBRE LÍMITES OBSERVACIONES
+IDENTIFICATION ­ NAME SUPERIOR / REMARKS
+INFERIOR
+UPPER /
+LOWER LIMIT
+1 2 3
+7000 FT
+MOA 83 YOPAL 9000 FT AMSL H24 (Activación y Desactivación)
+H24
+7000 FT AMSL
+MOA 84 YOPAL 9000 FT
+7000 FT
+AIS COLOMBIA A 70/26
+
+===== ARCHIVO: ENR 5.3.pdf =====
+--- página 1 ---
+AIP ENR 5.3 ­ 1
+COLOMBIA 28 NOV 2024
+ENR 5.3 OTRAS ACTIVIDADES DE ENR 5.3 OTHER ACTIVITIES OF A
+ÍNDOLE PELIGROSA Y OTROS RIESGOS DANGEROUS NATURE AND OTHER
+POTENCIALES POTENTIAL RISKS
+Autoridad
+Medidas Observaciones
+Limites laterales Coordenadas Limites Verticales Responsable
+aconsejadas Hora de ACT
+de la INFO
+Authority
+Advisory Remarks
+Lateral limits coordinates Vertical Limits responsible
+measures Time of ACT
+for INFO
+1 2 3 4 5
+8000 FT Espacio Aéreo Espacio Aéreo
+Circulo con centro en AMSL Ejercicio de administrado y administrado y
+041706N/0743603W con radio tiro parabólico controlado por controlado por
+GND
+de 2NM artillería de la Fuerza Aérea la Fuerza Aérea
+Circular area centered on las Fuerzas Colombiana Colombiana.
+041706N/0743603W within a Militares Área de Polígono ­
+2NM radius. Área de no Melgar Tiro Parabólico
+sobrevuelo Aproximación Activada por la
+de aeronaves Dependencia ATS de
+cuando Aviestado
+este activa. Airspace Melgar Aproximación
+administered Se activará mediante
+Se restringe and controlled NOTAM con
+el sobrevuelo by the mínimo 24 horas de
+de todo tipo Colombian antelación.
+de aeronaves Air Force. Airspace
+dentro de administered and
+lo límites Melgar controlled by the
+verticales Approach Colombian Air Force.
+y laterales Polygon Area ­
+del área sin Parabolic Shot
+la debida Activated by the
+autorización Aviestado ATS Unit
+Melgar Approach
+Parabolic It will be activated by
+firing exercise NOTAM at least 24
+artillery of hours in advance.
+the Military
+Forces Area
+of no aircraft
+overflight
+when active.
+Overflight of
+all types of
+aircraft within
+the vertical and
+lateral limits
+of the area
+is restricted
+without proper
+authorization
+10000 H24
+Desde 045905N/0735510W; FT Espacio Aéreo
+045957N/0735450W; AMSL administrado
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 2 ---
+AIP ENR 5.3 ­ 2
+COLOMBIA 28 NOV 2024
+Autoridad
+Medidas Observaciones
+Limites laterales Coordenadas Limites Verticales Responsable
+aconsejadas Hora de ACT
+de la INFO
+Authority
+Advisory Remarks
+Lateral limits coordinates Vertical Limits responsible
+measures Time of ACT
+for INFO
+1 2 3 4 5
+045941N/0735352W; GND Área de no Fuerza Aérea
+045838N/0735416W; para el vuelo de Colombiana.
+punto de origen aeronaves.
+Area bounded by lines joining Emisión de Servicio
+points 045905N/0735510W; Gases Tóxicos Información de
+045957N/0735450W; e Inflamables. Vuelo y Alerta
+045941N/0735352W; Torre de Control
+045838N/0735416W to point of Alto riesgo Aeródromo
+origin. de daños por Flaminio
+explosión. Suarez
+Camacho
+SKGY
+Aircraft no­
+fly area. Airspace
+Emission of administered by
+Toxic and the Colombian
+Flammable Air Force.
+Gases. Flight
+High risk of Information and
+explosion Alert Service
+damage Flaminio
+Suarez
+Camacho
+Aerodrome
+Control Tower
+SKGY
+4500 FT H24
+Desde 070552N/0735242W; AMSL Área de no Espacio Aéreo
+070450N/0735137W; vuelo de administrado
+GND
+070323N/0735232W; aeronaves. Fuerza Aérea
+070356N/0735357W; para el Emisión de Colombiana
+punto de origen Gases Tóxicos Servicio
+Area bounded by lines joining e Inflamables. Información de
+points 070552N/0735242W; Alto riesgo Vuelo y Alerta
+070450N/0735137W; de daños por Bucaramanga
+070323N/0735232W; explosión. Aproximacion
+070356N/0735357W to point of Aircraft no­
+origin. fly area. Administered
+Emission of Airspace
+Toxic and Colombian
+Air Force
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 3 ---
+AIP ENR 5.3 ­ 3
+COLOMBIA 28 NOV 2024
+Autoridad
+Medidas Observaciones
+Limites laterales Coordenadas Limites Verticales Responsable
+aconsejadas Hora de ACT
+de la INFO
+Authority
+Advisory Remarks
+Lateral limits coordinates Vertical Limits responsible
+measures Time of ACT
+for INFO
+1 2 3 4 5
+Flammable Flight
+Gases. Information and
+High risk of Alert Service
+explosion Bucaramanga
+damage. Approach
+FL200 Espacio Aéreo
+Circulo con centro en Condiciones Espacio Aéreo administrado Fuerza
+GND
+045300N/0751900W con radio peligrosas administrado Aérea Colombiana
+de 6NM debido a Fuerza Aérea Se autoriza
+Circular area centered on emisión Colombiana únicamente el ingreso
+045300N/0751900W within a inadvertida Servicio de aeronaves en
+6NM radius. de cenizas Información de misiones de vigilancia
+volcánicas. Vuelo y Alerta vulcanológica, con
+Actividad Bogotá aprobación de la
+volcánica Terminal Oeste. Aerocivil o la FAC.
+permanente Torre de Control H24
+con erupciones Aeródromo Administered
+esporádicas La Nubia Airspace Colombian
+de variada SKMZ Air Force
+intensidad. Administered Only the entry
+Solicite o Airspace of aircraft on
+informe al Colombian volcanological
+ATC acerca Air Force surveillance missions
+de actividad Flight is authorized, with
+volcánica Information and the approval of the
+observada Alert Service Aerocivil or the FAC.
+en el área. Bogotá West H24
+Dangerous Terminal.
+conditions due Aerodrome
+to inadvertent Control Tower
+emission of La Nubia
+volcanic ash. SKMZ
+Permanent
+volcanic activity
+with sporadic
+eruptions
+of varied
+intensity.
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 4 ---
+AIP ENR 5.3 ­ 4
+COLOMBIA 28 NOV 2024
+Autoridad
+Medidas Observaciones
+Limites laterales Coordenadas Limites Verticales Responsable
+aconsejadas Hora de ACT
+de la INFO
+Authority
+Advisory Remarks
+Lateral limits coordinates Vertical Limits responsible
+measures Time of ACT
+for INFO
+1 2 3 4 5
+Request or
+report to the
+ATC about
+observed
+volcanic activity
+in the area.
+6500 FT Área de Polígono­
+Desde 013016N/0753335W; AMSL Tiro Parabólico.
+013142N/0753037W; Entrenamiento Servicio Activación a Solicitud
+GND
+012646N/0752540W; Polígono Información de mediante NOTAM
+012319N/0753246W; para el de Mortero. Vuelo y Alerta Polygon Area­
+punto de origen Área de no Torre de Control Parabolic Shooting.
+Area bounded by lines joining vuelo de Aeródromo On­Demand
+points 013016N/0753335W; aeronaves Gustavo Activation via NOTAM
+013142N/0753037W; mientras se Artunduaga
+012646N/0752540W; encuentre Paredes
+012319N/0753246W to point of activa. SKFL
+origin. Se activará Flight
+mediante Information and
+publicación Alert Service
+NOTAM con Aerodrome
+mínimo 48 Control Tower
+horas de Gustavo
+antelación. Artunduaga
+Durante la Paredes
+Activación del SKFL
+área, la Zona
+de Control
+CTR FLA,
+así como los
+procedimientos
+Instrumentos se
+suspenden en
+el AD Florencia.
+Mortar Polygon
+Training.
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 5 ---
+AIP ENR 5.3 ­ 5
+COLOMBIA 12 JUN 2025
+Autoridad
+Medidas Observaciones
+Limites laterales Coordenadas Limites Verticales Responsable
+aconsejadas Hora de ACT
+de la INFO
+Authority
+Advisory Remarks
+Lateral limits coordinates Vertical Limits responsible
+measures Time of ACT
+for INFO
+1 2 3 4 5
+Aircraft no­
+fly area
+while active.
+It will be
+activated
+by NOTAM
+publication at
+least 48 hours
+in advance.
+During the
+Activation of
+the area, the
+CTR Control
+Zone FLA, as
+well as the
+Instruments
+procedures
+are suspended
+in the AD
+Florence.
+AIS COLOMBIA AIRAC AMDT 68/25
+
+===== ARCHIVO: ENR 5.4.pdf =====
+--- página 1 ---
+AIP ENR 5.4 ­ 1
+COLOMBIA 12 JUN 2025
+ENR 5.4 OBSTÁCULOS PARA LA ENR 5.4 AIR NAVIGATION OBSTACLES
+NAVEGACIÓN AÉREA
+Tipo de
+ID OBST o ELEV/HGT LGT OBST
+obstáculo Posición OBST Observaciones
+designación (M) Tipo/Color
+(OBST)
+HGT (AGL) in M
+OBST ID or OBST LGT
+OBST type OBST position ELEV Remarks
+designation Type/Colour
+(AMSL) in Ft
+NIL NIL NIL NIL NIL NIL
+AIS COLOMBIA AIRAC AMDT 68/25
+
+===== ARCHIVO: ENR 5.5.pdf =====
+--- página 1 ---
+AIP ENR 5.5 ­ 1
+COLOMBIA 28 NOV 2024
+ENR 5.5 DEPORTE AÉREO Y ACTIVIDADES ENR 5.5 AERIAL SPORTING AND
+RECREATIVAS RECREATIONAL ACTIVITIES
+Número Telefono
+Límites Observaciones y
+Designación y Limites laterales Explotador /
+Verticales hora de ACT
+usuario
+Operator/User
+Designation and lateral limits Vertical limits Remarks and time of ACT
+Tel Nr.
+1 2 3 4
+ZONAS DE PARAPENTE Y PARAMOTOR
+PARAGLIDING AND PARAMOTOR AREAS
+Zona 1 (Playas de Ballesteros y 400 FT TWR Rafael Nuñez HJ
+Marbella.) AMSL Cartagena
+Desde 102540N/0753304W; +57 60 (5) 6660036
+SFC
+102551N/0753310W; Admon
+102653N/0753122W; +57 60 (5) 6664613
+102652N/0753114W;
+102540N/0753304W; para el punto de
+origen
+Area bounded by lines joining
+points 102540N/0753304W;
+102551N/0753310W;
+102653N/0753122W;
+102652N/0753114W;
+102540N/0753304W to point of origin.
+Zona 2 (Playas de Barú.) 400 FT TWR Rafael Nuñez Condiciones de Utilización para
+Desde 101000N/0753852W; AMSL Cartagena Zonas 1 y 2:
+100950N/0753839W; +57 60 (5) 6664613 Condiciones meteorológicas
+SFC
+100816N/0753952W; +57 60 (5) 6660036 VMC
+100826N/0754005W; Receptor GPS­VFR, altímetro y
+101000N/0753852W; para el punto de brújula operando. Velocidad
+origen máxima: 35 Km/h
+Area bounded by lines joining Se prohíbe sobrevolar zonas
+points 101000N/0753852W; pobladas excepto la porción
+100950N/0753839W; de playa destinada para las
+100816N/0753952W; maniobras de
+100826N/0754005W; despegue y aterrizaje.
+101000N/0753852W to point of origin. HJ
+ZONAS DE PLANEADORES ­ GUAYMARAL
+GLIDER AREAS ­ GUAYMARAL
+Zona PAPA LIMA ALFA UNO (PLA1) 10500 TWR Flaminio Continuado con radio de 21
+Desde 044840N/0740407W; FT AMSL Suárez Camacho NM
+044736N/0740024W; Guaymaral de VOR BOG hasta la próxima
+SFC
+044107N/0740041W por un arco de +57 60 (1) 2962987 referencia
+sentido anti­horario de 21.02NM de Admon
+radio centrado en 045048N/0741924W +57 60 (1) 2962913
+(DME BOG); 044706N/0735840W;
+045033N/0740153W;
+045145N/0740141W;
+045406N/0740203W;
+045406N/0740505W;
+045201N/0740513W;
+045201N/0740358W;
+044842N/0740601W;
+044840N/0740407W; para el punto de
+origen
+Area bounded by lines joining
+points 044840N/0740407W;
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 2 ---
+AIP ENR 5.5 ­ 2
+COLOMBIA 28 NOV 2024
+ZONAS DE PLANEADORES ­ GUAYMARAL
+GLIDER AREAS ­ GUAYMARAL
+044736N/0740024W;
+044107N/0740041W then along
+the counter clockwise arc of a
+circle of 21.02NM radius centred
+on 045048N/0741924W (DME
+BOG); to 044706N/0735840W;
+045033N/0740153W;
+045145N/0740141W;
+045406N/0740203W;
+045406N/0740505W;
+045201N/0740513W;
+045201N/0740358W;
+044842N/0740601W;
+044840N/0740407W to point of origin.
+Zona PAPA LIMA ALFA UNO 10500 No
+WHISKEY (PLA1W) FT AMSL
+Desde 044842N/0740601W;
+SFC
+045201N/0740358W;
+045201N/0740513W;
+044843N/0740734W;
+044842N/0740601W; para el punto de
+origen
+Area bounded by lines joining
+points 044842N/0740601W;
+045201N/0740358W;
+045201N/0740513W;
+044843N/0740734W;
+044842N/0740601W to point of origin.
+Zona PAPA LIMA ALFA DOS (PLA2) 11000 FT TWR Flaminio Continuado con radio de 21
+Desde 045033N/0740153W; AMSL Suárez Camacho NM
+044706N/0735840W por un arco de Guaymaral de VOR BOG hasta la próxima
+SFC
+sentido horario de 21.02NM de radio +57 60 (1) 2962987 referencia.
+centrado en 045048N/0741924W Admon Continuado con radio de 24
+(DME BOG); 043837N/0740212W; +57 60 (1) 2962913 NM
+043355N/0740212W por un arco de de VOR BOG hasta la próxima
+sentido anti­horario de 24.02NM de referencia.
+radio centrado en 045048N/0741924W
+(DME BOG); 050138N/0735754W;
+045842N/0740634W;
+045406N/0740808W;
+045406N/0740203W;
+045145N/0740141W;
+045033N/0740153W; para el punto de
+origen
+Area bounded by lines joining
+points 045033N/0740153W;
+044706N/0735840W then along the
+clockwise arc of a circle of 21.02NM
+radius centred on 045048N/0741924W
+(DME BOG); to 043837N/0740212W;
+043355N/0740212W then along
+the counter clockwise arc of a
+circle of 24.02NM radius centred
+on 045048N/0741924W (DME
+BOG); to 050138N/0735754W;
+045842N/0740634W;
+045406N/0740808W;
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 3 ---
+AIP ENR 5.5 ­ 3
+COLOMBIA 28 NOV 2024
+ZONAS DE PLANEADORES ­ GUAYMARAL
+GLIDER AREAS ­ GUAYMARAL
+045406N/0740203W;
+045145N/0740141W;
+045033N/0740153W to point of origin.
+Zona PAPA LIMA ALFA TRES (PLA3) 12000 No Continuado con radio de 30
+Desde 044647N/0735542W; FT AMSL NM
+044602N/0734944W por un arco de de VOR BOG hasta la próxima
+SFC
+sentido anti­horario de 29.99NM de referencia.
+radio centrado en 045048N/0741924W Continuado con radio de 24
+(DME BOG); 045610N/0734950W; NM
+045518N/0735547W por un arco de de VOR BOG hasta la próxima
+sentido horario de 23.99NM de radio referencia.
+centrado en 045048N/0741924W (DME
+BOG); 044647N/0735542W; para el
+punto de origen
+Area bounded by lines joining
+points 044647N/0735542W;
+044602N/0734944W then along
+the counter clockwise arc of a
+circle of 29.99NM radius centred
+on 045048N/0741924W (DME
+BOG); to 045610N/0734950W;
+045518N/0735547W then along the
+clockwise arc of a circle of 23.99NM
+radius centred on 045048N/0741924W
+(DME BOG); to 044647N/0735542W to
+point of origin.
+Zona PAPA LIMA ALFA CUATRO 12000 No Continuado con radio de 24
+(PLA4) FT AMSL NM
+Desde 050138N/0735754W por de VOR BOG hasta la próxima
+SFC
+un arco de sentido anti­horario referencia.
+de 24.02NM de radio centrado Continuado con radio de 15
+en 045048N/0741924W (DME NM
+BOG); 050552N/0740035W; de VOR BOG hasta la próxima
+050207N/0740927W; referencia.
+045842N/0740634W;
+050138N/0735754W; para el punto de
+origen
+Area bounded by lines joining
+points 050138N/0735754W then
+along the counter clockwise arc of
+a circle of 24.02NM radius centred
+on 045048N/0741924W (DME
+BOG); to 050552N/0740035W;
+050207N/0740927W;
+045842N/0740634W;
+050138N/0735754W to point of origin.
+Zona PAPA LIMA ALFA CINCO 13000 No Continuado con radio de 24
+(PLA5) FT AMSL NM
+Desde 044647N/0735542W por un de VOR BOG hasta la próxima
+SFC
+arco de sentido horario de 24NM de referencia.
+radio centrado en 045048N/0741924W Continuado con radio de 25
+(DME BOG); 043355N/0740212W; NM
+043302N/0740212W; de VOR BOG hasta la próxima
+043210N/0735653W; referencia.
+043605N/0735653W por un arco de Continuado con radio de 30
+sentido anti­horario de 25.01NM de NM
+radio centrado en 050106N/0735913W de VOR BOG hasta la próxima
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 4 ---
+AIP ENR 5.5 ­ 4
+COLOMBIA 28 NOV 2024
+ZONAS DE PLANEADORES ­ GUAYMARAL
+GLIDER AREAS ­ GUAYMARAL
+(DME ZIP); 052026N/0734310W; referencia.
+061048N/0731916W;
+061048N/0733632W;
+055906N/0734231W;
+053156N/0734631W;
+053156N/0735626W;
+052353N/0735622W;
+051727N/0735940W;
+051140N/0740340W;
+050930N/0740110W;
+050407N/0740544W;
+050349N/0740526W;
+050552N/0740035W por un arco de
+sentido horario de 24.01NM de radio
+centrado en 045048N/0741924W
+(DME BOG); 045518N/0735547W;
+045610N/0734950W por un arco de
+sentido horario de 29.99NM de radio
+centrado en 045048N/0741924W
+(DME BOG); 044602N/0734944W;
+044647N/0735542W; para el punto de
+origen
+Area bounded by lines joining points
+044647N/0735542W then along the
+clockwise arc of a circle of 24NM
+radius centred on 045048N/0741924W
+(DME BOG); to 043355N/0740212W;
+043302N/0740212W;
+043210N/0735653W;
+043605N/0735653W then along
+the counter clockwise arc of a
+circle of 25.01NM radius centred
+on 050106N/0735913W (DME
+ZIP); to 052026N/0734310W;
+061048N/0731916W;
+061048N/0733632W;
+055906N/0734231W;
+053156N/0734631W;
+053156N/0735626W;
+052353N/0735622W;
+051727N/0735940W;
+051140N/0740340W;
+050930N/0740110W;
+050407N/0740544W;
+050349N/0740526W;
+050552N/0740035W then along the
+clockwise arc of a circle of 24.01NM
+radius centred on 045048N/0741924W
+(DME BOG); to 045518N/0735547W;
+045610N/0734950W then along the
+clockwise arc of a circle of 29.99NM
+radius centred on 045048N/0741924W
+(DME BOG); to 044602N/0734944W;
+044647N/0735542W to point of origin.
+Zona PAPA LIMA ALFA SEIS (PLA6) 12500 No Continuado con radio de 26
+Desde 050407N/0740544W; FT AMSL NM
+050930N/0740110W; de VOR BOG hasta la próxima
+SFC
+051140N/0740340W; referencia.
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 5 ---
+AIP ENR 5.5 ­ 5
+COLOMBIA 28 NOV 2024
+ZONAS DE PLANEADORES ­ GUAYMARAL
+GLIDER AREAS ­ GUAYMARAL
+050407N/0740544W; para el punto de
+origen
+Area bounded by lines joining
+points 050407N/0740544W;
+050930N/0740110W;
+051140N/0740340W;
+050407N/0740544W to point of origin.
+Zona PAPA LIMA ALFA SIETE (PLA7) 12000 TWR Flaminio
+Desde 053156N/0735626W; FT AMSL Suárez Camacho
+053156N/0734631W; Guaymaral
+SFC
+055906N/0734231W; +57 60 (1) 2962987
+053156N/0735626W; para el punto de Admon
+origen +57 60 (1) 2962913
+Area bounded by lines joining
+points 053156N/0735626W;
+053156N/0734631W;
+055906N/0734231W;
+053156N/0735626W to point of origin.
+Zona PAPA LIMA ALFA OCHO 11000 FT No
+(PLA8) AMSL
+Desde 061048N/0733632W;
+SFC
+060624N/0735129W;
+053156N/0735626W;
+061048N/0733632W; para el punto de
+origen
+Area bounded by lines joining
+points 061048N/0733632W;
+060624N/0735129W;
+053156N/0735626W;
+061048N/0733632W to point of origin.
+ZONAS DE PARAPENTE ­ GUAYMARAL
+PARAGLIDING ZONES ­ GUAYMARAL
+Zona de Parapentes 4 (Neusa) 12000 Horas diurnas (HJ) y en
+Desde 051318N/0735624W; FT AMSL condiciones
+051144N/0735316W; VMC
+SFC
+050619N/0740012W;
+050819N/0740540W;
+051318N/0735624W; para el punto de
+origen
+Area bounded by lines joining
+points 051318N/0735624W;
+051144N/0735316W;
+050619N/0740012W;
+050819N/0740540W;
+051318N/0735624W to point of origin.
+Zona de Parapentes 5 (Guatavita) 11000 FT Horas diurnas (HJ) y en
+Desde 050106N/0734829W; AMSL condiciones
+045312N/0734614W; VMC
+SFC
+044538N/0735113W;
+044346N/0735516W;
+044244N/0740037W;
+044544N/0740045W;
+044617N/0735653W;
+045517N/0735454W;
+050106N/0734829W; para el punto de
+origen
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 6 ---
+AIP ENR 5.5 ­ 6
+COLOMBIA 28 NOV 2024
+ZONAS DE PARAPENTE ­ GUAYMARAL
+PARAGLIDING ZONES ­ GUAYMARAL
+Area bounded by lines joining
+points 050106N/0734829W;
+045312N/0734614W;
+044538N/0735113W;
+044346N/0735516W;
+044244N/0740037W;
+044544N/0740045W;
+044617N/0735653W;
+045517N/0735454W;
+050106N/0734829W to point of origin.
+ZONA DE PARAPENTE ­ MEDELLIN (OLAYA HERRERA)
+PARAGLIDING ZONES ­ MEDELLIN (OLAYA HERRERA)
+ZONA DE PARAPENTE ­ MEDELLIN 9500 FT BTN 1100 o la salida del sol (lo
+Desde 062106N/0753645W; AMSL que
+062023N/0753417W; resulte más tarde) y 2300 o la
+SFC
+061857N/0753417W; puesta
+061921N/0753518W; del sol (lo que resulte más
+061856N/0753640W; temprano),
+062106N/0753645W; para el punto de se ajustara a las condiciones
+origen de afluencia
+Area bounded by lines joining de transito llegando, lo cual
+points 062106N/0753645W; será
+062023N/0753417W; potestativo del ATC.
+061857N/0753417W;
+061921N/0753518W;
+061856N/0753640W;
+062106N/0753645W to point of origin.
+ZONA DE PARAPENTE ­ MEDELLIN 7000 FT ZONA 30
+30 AMSL Horas diurnas y en condiciones
+Desde 055540N/0754016W; VMC
+SFC
+053956N/0754253W;
+054730N/0754712W;
+055153N/0754921W; para el punto de
+origen
+Area bounded by lines joining
+points 055540N/0754016W;
+053956N/0754253W;
+054730N/0754712W;
+055153N/0754921W to point of origin.
+ZONAS DE PARAPENTE 1 ­ AREA CAÑON DEL CHICAMOCHA (SANTANDER)
+PARAGLIDING AREAS 1 ­ CHICAMOCHA CANYON AREA (SANTANDER)
+ZONA PARAPENTE 1 (Cañón del 6800 FT BTN 1100 o la salida del sol (lo
+chicamocha y mesa de los santos) AMSL que
+Desde 065109N/0730357W; resulte más tarde) y 2300 o la
+SFC
+065157N/0730032W; puesta
+064432N/0725851W; del sol (lo que resulte más
+064556N/0730324W; temprano),
+065109N/0730357W; para el punto de se ajustará a las condiciones
+origen de seguridad
+Area bounded by lines joining expuestas por el Club
+points 065109N/0730357W; deportivo
+065157N/0730032W; que corresponda, en
+064432N/0725851W; concordancia con
+064556N/0730324W; el Reglamento Nacional de
+065109N/0730357W to point of origin. Parapente.
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 7 ---
+AIP ENR 5.5 ­ 7
+COLOMBIA 28 NOV 2024
+ZONAS DE PARAPENTE 1 ­ AREA CAÑON DEL CHICAMOCHA (SANTANDER)
+PARAGLIDING AREAS 1 ­ CHICAMOCHA CANYON AREA (SANTANDER)
+ZONA PARAPENTE 2 (Vereda 6900 FT • La maniobra de aterrizaje
+Paloblanco, municipio de Curiti) AMSL del parapente deberá ser
+Desde 064212N/0730518W; prevista para utilizar el
+SFC
+063943N/0730200W; área establecida para ello,
+063657N/0730438W; a menos que un factor de
+064005N/0730815W; obstáculos o fuerza mayor
+064212N/0730518W; para el punto de resulte imperativo.
+origen • El ATC dará prioridades
+Area bounded by lines joining que rigen para operación
+points 064212N/0730518W; de actividades deportivas
+063943N/0730200W; PARAPENTE en vuelo, en
+063657N/0730438W; cumplimiento de lo establecido
+064005N/0730815W; en el RAC capitulo
+064212N/0730518W to point of origin. IV, numeral 4.25.3.9.1 y
+capitulo quinto numeral
+5.5.4
+• Con el objeto de brindar
+el servicio de información
+de vuelo a las aeronaves
+que ingresan y salen hacia
+el sur del Aeropuerto de
+Bucaramanga; los
+responsables
+de clubes informaran
+iniciando y finalizando
+la operación a la dependencia
+de control de
+Aeródromo Palonegro
+Torre.
+Estas normas no excluyen
+otras
+vigentes que haya determinado
+la
+autoridad aeronáutica y
+cancela
+las demás que le sean
+contrarias.
+ZONA DE PARAPENTE 3 ­ RUITOQUE (SANTANDER)
+PARAGLIDING AREAS 3 ­ RUITOQUE (SANTANDER)
+ZONA PARAPENTE 3 (Ruitoque­ 5500 FT Horas diurnas (HJ) y en
+Santander) AMSL condiciones
+Desde 070158N/0730446W; VMC
+SFC
+070122N/0730611W;
+070335N/0730727W;
+070340N/0730534W;
+070158N/0730446W; para el punto de
+origen
+Area bounded by lines joining
+points 070158N/0730446W;
+070122N/0730611W;
+070335N/0730727W;
+070340N/0730534W;
+070158N/0730446W to point of origin.
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 8 ---
+AIP ENR 5.5 ­ 8
+COLOMBIA 28 NOV 2024
+ZONA DE PARAPENTES AREA DE PACHAVITA (CUNDINAMARCA)
+PARAGLIDING AREA PACHAVITA AREA (CUNDINAMARCA)
+Desde 050754N/0732553W; 12000 BTN 1100 a 2200 Área de
+050740N/0732203W; FT AMSL TKOF
+050741N/0732034W; definida en coord. 05 08 04 N
+SFC
+050518N/0732203W; para el punto de 073
+origen 23 15 W se deberá evitar en
+Area bounded by lines joining todo momento el sobrevuelo
+points 050754N/0732553W; para las actividades deportivas
+050740N/0732203W; del casco urbano del municipio
+050741N/0732034W; de Pachavita el área de
+050518N/0732203W to point of origin. Pachavita
+posee un perímetro
+17.2 NM cuadradas y un área
+de
+15.4 NM cuadradas
+Información
+De Contacto: CLUB RAIRA
+TEL : 57 3108030975
+ZONA DE PARAPENTES – DUITAMA (BOYACA)
+PARAGLIDING AREA – DUITAMA (BOYACA)
+Desde 055131N/0730335W; 12500 BTN 1100 a 2200 Información
+055604N/0725934W; FT AMSL De Contacto: CLUB X­
+055750N/0725624W; TRADOS
+SFC
+055058N/0730134W; CEL: 3118543485
+055131N/0730335W; para el punto de
+origen
+Area bounded by lines joining
+points 055131N/0730335W;
+055604N/0725934W;
+055750N/0725624W;
+055058N/0730134W;
+055131N/0730335W to point of origin.
+ZONA DE PARAPENTES – TOBASIA (BOYACA)
+PARAGLIDING AREA – TOBASIA (BOYACA)
+Desde 055113N/0725823W; 12500 BTN 1100 a 2200 Información
+055115N/0725817W; FT AMSL De Contacto: CLUB X­
+055259N/0725732W; TRADOS
+SFC
+055318N/0725708W; CEL: 3118543485
+055143N/0725516W;
+055037N/0725624W;
+055113N/0725823W; para el punto de
+origen
+Area bounded by lines joining
+points 055113N/0725823W;
+055115N/0725817W;
+055259N/0725732W;
+055318N/0725708W;
+055143N/0725516W;
+055037N/0725624W;
+055113N/0725823W to point of origin.
+ZONA DE PARAPENTE – VALLE DEL CAUCA
+PARAGLIDING AREA – VALLE DEL CAUCA
+ZONA PARAPENTE 10 10500 BTN la salida del sol y la
+Desde 033129N/0763717W; FT AMSL puesta
+033039N/0763438W; del sol.
+SFC
+031423N/0763943W;
+031513N/0764222W;
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 9 ---
+AIP ENR 5.5 ­ 9
+COLOMBIA 28 NOV 2024
+ZONA DE PARAPENTE – VALLE DEL CAUCA
+PARAGLIDING AREA – VALLE DEL CAUCA
+033129N/0763717W; para el punto de
+origen
+Area bounded by lines joining
+points 033129N/0763717W;
+033039N/0763438W;
+031423N/0763943W;
+031513N/0764222W;
+033129N/0763717W to point of origin.
+ZONA PARAPENTE 6 7500 FT BTN 1700­1900 UTC
+Desde 042009N/0760342W; AMSL
+041855N/0760154W;
+SFC
+041213N/0760630W;
+040955N/0760624W;
+040824N/0760939W;
+041230N/0760856W;
+042009N/0760342W; para el punto de
+origen
+Area bounded by lines joining
+points 042009N/0760342W;
+041855N/0760154W;
+041213N/0760630W;
+040955N/0760624W;
+040824N/0760939W;
+041230N/0760856W;
+042009N/0760342W to point of origin.
+ZONA PARAPENTE 7 10500 BTN la salida del sol y la
+Desde 040955N/0760624W; FT AMSL puesta
+040229N/0760606W; del sol.
+SFC
+040018N/0760916W;
+035325N/0761159W;
+034500N/0760800W;
+034500N/0761600W;
+040107N/0761238W por un arco de
+sentido anti­horario de 4.63NM de
+radio centrado en 040540N/0761326W
+(ARP SKUL); 040824N/0760939W;
+040955N/0760624W; para el punto de
+origen
+Area bounded by lines joining
+points 040955N/0760624W;
+040229N/0760606W;
+040018N/0760916W;
+035325N/0761159W;
+034500N/0760800W;
+034500N/0761600W;
+040107N/0761238W then along
+the counter clockwise arc of a
+circle of 4.63NM radius centred
+on 040540N/0761326W (ARP
+SKUL); to 040824N/0760939W;
+040955N/0760624W to point of origin.
+ZONA PARAPENTE 8 10500 BTN la salida del sol y la
+Desde 034500N/0761148W; FT AMSL puesta
+033400N/0761348W; del sol
+SFC
+033000N/0761348W;
+033000N/0761200W;
+031300N/0761200W;
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 10 ---
+AIP ENR 5.5 ­ 10
+COLOMBIA 28 NOV 2024
+ZONA DE PARAPENTE – VALLE DEL CAUCA
+PARAGLIDING AREA – VALLE DEL CAUCA
+031300N/0761348W;
+030232N/0761925W;
+025908N/0761805W;
+031300N/0761105W;
+031557N/0761105W;
+032024N/0760858W;
+034500N/0760800W;
+034500N/0761148W; para el punto de
+origen
+Area bounded by lines joining
+points 034500N/0761148W;
+033400N/0761348W;
+033000N/0761348W;
+033000N/0761200W;
+031300N/0761200W;
+031300N/0761348W;
+030232N/0761925W;
+025908N/0761805W;
+031300N/0761105W;
+031557N/0761105W;
+032024N/0760858W;
+034500N/0760800W;
+034500N/0761148W to point of origin.
+ZONA PARAPENTE 9 7500 FT BTN la salida del sol y la
+Desde 042545N/0761323W; AMSL puesta
+041524N/0761323W; del sol.
+SFC
+041126N/0761710W;
+034736N/0763043W;
+034736N/0762813W;
+034027N/0763051W;
+034102N/0763324W;
+034843N/0763243W;
+042545N/0761323W; para el punto de
+origen
+Area bounded by lines joining
+points 042545N/0761323W;
+041524N/0761323W;
+041126N/0761710W;
+034736N/0763043W;
+034736N/0762813W;
+034027N/0763051W;
+034102N/0763324W;
+034843N/0763243W;
+042545N/0761323W to point of origin.
+ZONA DE PARAPENTE – VALLE DEL CAUCA/RISARALDA
+PARAGLIDING AREA – VALLE DEL CAUCA/RISARALDA
+ZONA PARAPENTE 11 9500 FT BTN 1400UTC hasta la puesta
+Desde 050206N/0755945W; AMSL del sol y en condiciones VMC
+050206N/0755825W;
+SFC
+045552N/0760055W;
+045418N/0755603W;
+045008N/0755916W por un arco de
+sentido anti­horario de 4.99NM de
+radio centrado en 044527N/0755722W
+(ARP SKGO); 044301N/0760142W;
+043958N/0760249W;
+043723N/0760803W;
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 11 ---
+AIP ENR 5.5 ­ 11
+COLOMBIA 28 NOV 2024
+ZONA DE PARAPENTE – VALLE DEL CAUCA/RISARALDA
+PARAGLIDING AREA – VALLE DEL CAUCA/RISARALDA
+044528N/0760420W;
+045332N/0760351W;
+050206N/0755945W; para el punto de
+origen
+Area bounded by lines joining
+points 050206N/0755945W;
+050206N/0755825W;
+045552N/0760055W;
+045418N/0755603W;
+045008N/0755916W then along
+the counter clockwise arc of a
+circle of 4.99NM radius centred
+on 044527N/0755722W (ARP
+SKGO); to 044301N/0760142W;
+043958N/0760249W;
+043723N/0760803W;
+044528N/0760420W;
+045332N/0760351W;
+050206N/0755945W to point of origin.
+ZONA PARAPENTE 12 7500 FT BTN 1400UTC hasta la puesta
+Desde 044152N/0760600W; AMSL del sol y en condiciones VMC
+043636N/0760443W;
+SFC
+043253N/0760742W;
+041933N/0761018W;
+041904N/0761124W;
+041524N/0761323W;
+042545N/0761324W;
+044152N/0760600W; para el punto de
+origen
+Area bounded by lines joining
+points 044152N/0760600W;
+043636N/0760443W;
+043253N/0760742W;
+041933N/0761018W;
+041904N/0761124W;
+041524N/0761323W;
+042545N/0761324W;
+044152N/0760600W to point of origin.
+ZONA PARAPENTE 13 7500 FT BTN 1700­2200
+Desde 042440N/0760918W; AMSL
+042314N/0760136W;
+SFC
+041916N/0760419W;
+042143N/0760953W;
+042440N/0760918W; para el punto de
+origen
+Area bounded by lines joining
+points 042440N/0760918W;
+042314N/0760136W;
+041916N/0760419W;
+042143N/0760953W;
+042440N/0760918W to point of origin.
+ZONA PARAPENTE 15 6500 FT Horas Diurnas y en
+Circulo con centro en AMSL condiciones VMC
+044841N/0755955W con radio de 6NM
+SFC
+Circular area centered on
+044841N/0755955W within a 6NM
+radius.
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 12 ---
+AIP ENR 5.5 ­ 12
+COLOMBIA 28 NOV 2024
+ZONA DE PARAPENTE – VALLE DEL CAUCA/RISARALDA
+PARAGLIDING AREA – VALLE DEL CAUCA/RISARALDA
+ZONA PARAPENTE 22 4500 FT BTN 1700­2200
+AMSL
+SFC
+ZONAS DE PARAPENTE – CARTAGENA
+PARAGLIDING AREA – CARTAGENA
+ZONA PARAPENTE 16 450 FT Horas Diurnas y en
+Desde 101136N/0753751W; AMSL condiciones VMC
+101204N/0753914W;
+SFC
+100903N/0754256W;
+100810N/0754207W;
+100940N/0754007W;
+101136N/0753751W; para el punto de
+origen
+Area bounded by lines joining
+points 101136N/0753751W;
+101204N/0753914W;
+100903N/0754256W;
+100810N/0754207W;
+100940N/0754007W;
+101136N/0753751W to point of origin.
+ZONA PARAPENTE 17 140 FT Horas Diurnas y en
+Desde 102657N/0753154W; AMSL condiciones VMC
+102652N/0753114W;
+SFC
+102540N/0753304W;
+102603N/0753316W;
+102657N/0753154W; para el punto de
+origen
+Area bounded by lines joining
+points 102657N/0753154W;
+102652N/0753114W;
+102540N/0753304W;
+102603N/0753316W;
+102657N/0753154W to point of origin.
+ZONA PARAPENTE 18 140 FT Horas Diurnas y en
+Desde 102749N/0753018W; AMSL condiciones VMC
+102833N/0753006W;
+SFC
+102936N/0752938W;
+102921N/0752930W;
+102901N/0752935W;
+102833N/0752947W;
+102806N/0753004W;
+102749N/0753018W; para el punto de
+origen
+Area bounded by lines joining
+points 102749N/0753018W;
+102833N/0753006W;
+102936N/0752938W;
+102921N/0752930W;
+102901N/0752935W;
+102833N/0752947W;
+102806N/0753004W;
+102749N/0753018W to point of origin.
+ZONA PARAPENTE 19 300 FT Horas Diurnas y en
+Desde 103027N/0753005W; AMSL condiciones VMC
+103105N/0753018W;
+SFC
+103212N/0752958W;
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 13 ---
+AIP ENR 5.5 ­ 13
+COLOMBIA 28 NOV 2024
+ZONAS DE PARAPENTE – CARTAGENA
+PARAGLIDING AREA – CARTAGENA
+103316N/0753028W;
+103309N/0753004W;
+103209N/0752935W;
+103027N/0753005W; para el punto de
+origen
+Area bounded by lines joining
+points 103027N/0753005W;
+103105N/0753018W;
+103212N/0752958W;
+103316N/0753028W;
+103309N/0753004W;
+103209N/0752935W;
+103027N/0753005W to point of origin.
+ZONAS DE PARAPENTE – META
+PARAGLIDING AREA – META
+ZONA PARAPENTE 14 3500 FT Horas Diurnas y en
+Desde 040425N/0734325W; AMSL condiciones VMC
+040756N/0733919W;
+SFC
+040820N/0733927W;
+040951N/0733954W;
+041005N/0733842W;
+041126N/0733836W;
+041126N/0734114W;
+040551N/0734457W;
+040903N/0735526W;
+035935N/0735139W;
+035914N/0734735W;
+040551N/0734457W; para el punto de
+origen
+Area bounded by lines joining
+points 040425N/0734325W;
+040756N/0733919W;
+040820N/0733927W;
+040951N/0733954W;
+041005N/0733842W;
+041126N/0733836W;
+041126N/0734114W;
+040551N/0734457W;
+040903N/0735526W;
+035935N/0735139W;
+035914N/0734735W;
+040551N/0734457W to point of origin.
+NORMAS PROCEDIMENTALES DE TO BE TRANSLATED
+TRÁNSITO AEREO PARA LA OPERACIÓN
+DE PLANEADORES EN EL AERÓDROMO
+DE GUAYMARAL
+1. Dado el hecho que los planeadores operan en un 1. TO BE TRANSLATED
+espacio aéreo bajo jurisdicción de una Torre de Control de
+Aeródromo, deberán regirse por las normas establecidas
+en el RAC capítulo cuarto numeral 4.25.3.9.3
+2. La práctica de vuelo en planeador esta autorizada 2. TO BE TRANSLATED
+entre las 11:00 y 23:00 UTC o la puesta del sol (lo que
+resulte más temprano), y se ajustará a las condiciones de
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 14 ---
+AIP ENR 5.5 ­ 14
+COLOMBIA 28 NOV 2024
+afluencia de tránsito llegando, lo cual será potestativo del
+ATC.
+3. Los planeadores operarán con mínimos 3. TO BE TRANSLATED
+meteorológicos iguales o superiores a los publicados para
+aeronaves convencionales que utilizan el aeródromo de
+Guaymaral.
+4. Se establece como área de prácticas para los 4. TO BE TRANSLATED
+planeadores ocho zonas definidas de la siguiente manera:
+Zona Papa Uno (PLA1) SFC a 10500 ft
+Zona Papa Uno Wiskey (PLA1W) SFC a 10500 ft
+Zona Papa Dos (PLA2) SFC a 11000 ft
+Zona Papa Tres (PLA3) SFC a 12000 ft
+Zona Papa Cuatro (PLA4) SFC a 12000 ft
+Zona Papa Cinco (PLA5) SFC a 13000 ft
+Zona Papa Seis (PLA6) SFC a 12500 ft
+Zona Papa Siete (PLA7) SFC a 12000 ft
+Zona Papa Ocho (PLA8) SFC a 11000 ft
+5. La altitud máxima permitida será la indicada en cada una 5. TO BE TRANSLATED
+de las zonas enunciadas en el numeral anterior y cualquier
+otra altitud prevista deberá ser solicitada con antelación al
+Control de aeródromo de Guaymaral, quien a su vez lo hará
+ante la dependencia ATC correspondiente de El dorado.
+6. El ingreso al circuito de tránsito de aeródromo de 6. TO BE TRANSLATED
+Guaymaral será por el Norte; el planeador notificará al
+control de Aeródromo sus intenciones de abandonar el
+área de prácticas descrita en (4) para recibir instrucciones
+y la abandonará con una altitud no superior al área
+de trabajo en que se encuentre.
+7. Se establece como norma procedimental obligatoria, 7. TO BE TRANSLATED
+la necesidad que tiene el ATC de planificar la maniobra de
+aterrizaje del planeador, dada su prioridad, para lo cual,
+éste deberá ingresar al circuito de aeródromo por el Norte
+de tal forma que notificará ABEAM a la cabecera de la
+pista a utilizar con 9.200 ft, como punto de decisión para
+su aterrizaje.
+8. El Control de Aeródromo Guaymaral, no 8. TO BE TRANSLATED
+autorizará la operación de planeadores, si los
+equipos de radiocomunicación, tanto de la
+aeronave remolcadora como de la remolcada y el vehículo
+automotor asistente no dan garantías de eficiencia.
+9. El vehículo que remolca el planeador deberá 9. TO BE TRANSLATED
+abandonar el área de aterrizaje tan pronto como ha dejado
+el planeador en la pista.
+10. Cuando se presente la necesidad de efectuar un 10. TO BE TRANSLATED
+aterrizaje en lugar distinto al aeródromo de Guaymaral; el
+piloto del planeador informará oportunamente al ATC y se
+le autorizará para que abandone la frecuencia aeronáutica
+respectiva con el fin de que efectúe la coordinación
+pertinente con su personal asistente. Después de
+completado el aterrizaje, informará a la Torre de Control
+Guaymaral a la mayor brevedad posible y por el medio de
+comunicación disponible más expedito.
+11. En la medida de lo posible la maniobra de aterrizaje 11. TO BE TRANSLATED
+del planeador deberá ser prevista para utilizar los tramos
+establecidos para ello y solamente utilizará el área de
+aterrizaje principal cuando un factor de obstrucción o de
+fuerza mayor resulte imperativo.
+12. El ATC dará las prioridades que rigen para los 12. TO BE TRANSLATED
+planeadores en vuelo, en cumplimiento de lo establecido
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 15 ---
+AIP ENR 5.5 ­ 15
+COLOMBIA 28 NOV 2024
+en el RAC capítulo cuarto, numeral 4.25.3.9.1 y capitulo
+Quinto numeral 5.5.4
+13. Estas normas no excluyen otras vigentes que haya 13. TO BE TRANSLATED
+determinado la autoridad aeronáutica y cancelan todas las
+demás que le sean contrarias.
+NORMAS PROCEDIMENTALES DE TO BE TRANSLATED
+TRÁNSITO AÉREO PARA LA OPERACIÓN
+DE ACTIVIDADES DE AVIACIÓN
+DEPORTIVA PARAPENTE EN EL
+AERÓDROMO OLAYA HERRERA ­ MEDELLIN
+1. Dado el hecho de que los PARAPENTES operan en 1. TO BE TRANSLATED
+un espacio aéreo bajo jurisdicción de una TORRE DE
+CONTROL DE AERODROMO, deberán regirse por las
+normas establecidas en el RAC capitulo cuarto numeral
+4.25.6.2.
+2. La práctica de vuelo en PARAPENTE esta autorizada 2. TO BE TRANSLATED
+entre las 11:00 UTC o la salida del sol (lo que resulte
+mas tarde) y 23:00 UTC o la puesta del sol (lo que
+resulte mas temprano) y se ajustara a las condiciones de
+afluencia de transito llegando, lo cual será potestativo del
+ATC.
+3. Los planeadores operarán con mínimos 3. TO BE TRANSLATED
+meteorológicos iguales o superiores a los publicados
+para aeronaves convencionales que utilizan el aeródromo
+de Guaymaral.
+4. Los límites verticales serán desde la superficie hasta 4. TO BE TRANSLATED
+9.500 pies de altitud.
+062106N – 0753645W
+062023N – 0753417W
+061857N – 0753417W
+061921N – 0753518W
+061856N – 0753640W
+5. Con el objeto de brindar el servicio de información 5. TO BE TRANSLATED
+de vuelo a las aeronaves que ingresan por el norte al
+círculo de tránsito en el Aeropuerto OLAYA HERRERA de
+Medellín; los responsables de clubes informaran iniciando
+y finalizando la operación a la dependencia de control de
+Aeródromo Olaya Herrera.
+6. El CONTROL DE AERÓDROMO MEDELLIN, no 6. TO BE TRANSLATED
+autorizará la operación de aviación deportiva Parapente, si
+las condiciones meteorológicas son tales que no permiten
+dicha operación en condiciones VFR, de acuerdo a las
+normas establecidas en el RAC capitulo cuarto numeral
+4.25.6.4, literal e, f, j, m, n.
+7. La maniobra de aterrizaje del Parapente deberá 7. TO BE TRANSLATED
+ser prevista para utilizar el Área establecida para ello, a
+menos que un factor de obstrucción o de fuerza
+mayor resulte imperativo.
+8. El ATC dará las prioridades que rigen para la operación 8. TO BE TRANSLATED
+de actividades deportivas PARAPENTE en vuelo, en
+cumplimiento de lo establecido en el RAC capítulo cuarto,
+numeral 4.25.3.9.1 y capítulo quinto numeral 5.5.4.
+9. Estas normas no excluyen otras vigentes que haya 9. TO BE TRANSLATED
+determinado la autoridad aeronáutica y cancelan todas las
+demás que le sean contrarias.
+AIS COLOMBIA AIRAC AMDT 67/24
+--- página 16 ---
+AIP ENR 5.5 ­ 16
+COLOMBIA 28 NOV 2024
+NORMAS PROCEDIMENTALES PARA TO BE TRANSLATED
+LA OPERACION DE ACTIVIDADES DE
+AVIACION DEPORTIVA PARAPENTE EN EL
+AREA DEL CAÑON DE CHICAMOCHA
+1. La práctica en parapente está autorizada entre las 11:00 1. TO BE TRANSLATED
+UTC o la salida del sol (lo que resulte más tarde) y las 23:00
+UTC o la puesta del sol (lo que resulte más temprano),
+y se ajustara de acuerdo a las condiciones de seguridad
+expuestas por el Club Deportivo que corresponda, en
+concordancia con el Reglamento Nacional de Parapente.
+2. Se establece como área de prácticas para la aviación 2. TO BE TRANSLATED
+deportiva Parapente, la zona que se encuentra ubicada
+dentro de un espacio clase “G” y sus límites laterales
+son los que a continuación se indican por medio de
+coordenadas geográficas.
+ZONA UNO ZONE ONE
+Cañón del chicamocha y mesa de los santos. TO BE TRANSLATED
+Polígono formado por la unión de las siguientes
+coordenadas:
+062106N – 0753645W
+062023N – 0753417W
+061857N – 0753417W
+061921N – 0753518W
+061856N – 0753640W
+Los límites verticales serán desde la superficie hasta TO BE TRANSLATED
+6.800 pies de altitud.
+ZONA DOS ZONE TWO
+Vereda Paloblanco, municipio de Curiti TO BE TRANSLATED
+(Santander) Polígono formado por la unión de las
+siguientes coordenadas:
+062106N – 0753645W
+062023N – 0753417W
+061857N – 0753417W
+061921N – 0753518W
+061856N – 0753640W
+Los límites verticales serán desde la superficie hasta TO BE TRANSLATED
+6.900 pies de altitud.
+3. La maniobra de aterrizaje del parapente deberá ser 3. TO BE TRANSLATED
+prevista para utilizar el área establecida para ello,
+a menos que un factor de obstáculos o fuerza mayor
+resulte imperativo.
+4. Con el objeto de brindar el servicio de información 4. TO BE TRANSLATED
+de vuelo a las aeronaves que ingresan y salen hacia el sur
+del Aeropuerto de Bucaramanga; los responsables de
+clubes informaran iniciando y finalizando la operación a la
+dependencia de control de Aeródromo Palonegro Torre.
+5. El ATC dará las prioridades que rigen para 5. TO BE TRANSLATED
+operación de actividades deportivas PARAPENTE en
+vuelo, en cumplimiento de lo establecido en el
+RAC capítulo cuarto, numeral 4.25.3.9.1 y capitulo
+quinto numeral 5.5.4
+6. Estas normas no excluyen otras vigentes que 6. TO BE TRANSLATED
+haya determinado la autoridad aeronáutica y cancela
+las demás que le sean contrarias.
+AIS COLOMBIA AIRAC AMDT 67/24
+
+===== ARCHIVO: ENR 5.6.pdf =====
+--- página 1 ---
+AIP ENR 5.6 ­ 1
+COLOMBIA 28 NOV 2024
+ENR 5.6 VUELOS MIGRATORIOS DE AVES Y ENR 5.6 BIRD MIGRATION AND AREAS WITH
+ZONAS CON FAUNA VULNERABLE VULNERABLE FAUNA
+PÁGINA EN PROCESO DE ELABORACIÓN IN ELABORATION PROCESS
+AIS COLOMBIA AIRAC AMDT 67/24

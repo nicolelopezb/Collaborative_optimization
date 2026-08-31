@@ -1,0 +1,10 @@
+networkx
+numpy
+pandas
+geopandas
+shapely
+matplotlib
+folium
+pulp
+pdfplumber
+

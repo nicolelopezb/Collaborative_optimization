@@ -1,0 +1,13 @@
+
+
+===== ARCHIVO: ENR 3.4.pdf =====
+--- página 1 ---
+AIP ENR 3.4 ­ 1
+COLOMBIA 28 NOV 2024
+ENR 3.4 RUTAS PARA HELICÓPTEROS ENR 3.4 HELICOPTER ROUTES
+Designador de Ruta
+PuntosCoordenadas Derrota DIST LIMITES MNM Clase Sentido OBSERVACIONES
+Significativos MAG (NM) VERTICALES ALT Espacio
+Aéreo
+Superior Inferior Impar Par
+AIS COLOMBIA AIRAC AMDT 67/24

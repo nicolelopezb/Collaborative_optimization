@@ -1,24 +1,20 @@
 """
 main.py
 --------
-Orquesta el ciclo bi-nivel completo descrito en la Sección 3.2 del artículo:
+Orquesta el ciclo bi-nivel completo (Sección 3.2 del artículo).
 
-    nivel inferior (asignar vuelos a rutas, minimizar exceso + distancia)
-                         ⇅ retroalimentación bidireccional
-    nivel superior (crecer/ajustar la red según congestión)
-
-hasta que se cumplan AMBOS criterios de convergencia:
-    Criterio I:  variación de exceso total < 3% Y variación de distancia
-                 adicional total < 0.5% en dos iteraciones consecutivas
-    Criterio II: exceso horario en cada waypoint <= 5% de su capacidad
+NOVEDAD DE ESTA VERSIÓN: usa la demanda REAL de Colombia
+(data/processed/demand_weekly.csv, generada por run_demand_extraction.py
+a partir del archivo de Aerocivil) en vez de los 20 vuelos sintéticos de
+demostración que usaban las versiones anteriores.
 
 Uso:
-    python src/main.py --scenario 3 --max-iterations 10
+    python src/main.py --scenario 3 --max-iterations 5
 """
 
 import argparse
 import sys
-sys.path.insert(0, "src")  # por si se corre desde la raíz del proyecto
+sys.path.insert(0, "src")
 
 import pandas as pd
 import networkx as nx
@@ -26,6 +22,8 @@ import networkx as nx
 from network import build_network, great_circle_distance_km, plot_network
 from pathing import build_candidate_routes
 from capacities import generate_waypoint_capacity, generate_airport_capacity
+from demand import synthesize_weekly_flights, build_hourly_demand
+from airports import connect_airports_to_network
 import apf_growth as apf
 
 try:
@@ -35,16 +33,59 @@ except ImportError:
     MILP_AVAILABLE = False
 
 
-DEFAULT_LEVEL = "FL_unico"  # simplificación MVP: un solo nivel de vuelo (ver README)
+DEFAULT_LEVEL = "FL_unico"
 
 
-def assign_flights_shortest_path(routes_df: pd.DataFrame, flights_df: pd.DataFrame):
-    """Asignación baseline simple: cada vuelo toma la ruta más corta
-    (route_idx == 0) de su par origen-destino. Se usa como resultado de
-    respaldo si PuLP/MILP no está disponible, y como punto de partida
-    razonable para inicializar el ciclo iterativo."""
+def load_real_demand(demand_weekly_csv: str, G: nx.Graph, seed: int = 42):
+    """Carga la demanda semanal real (origin, destination, weekly_frequency)
+    y la convierte en vuelos individuales sintéticos distribuidos en la
+    semana, tal como espera el resto del pipeline (pathing, MILP, APF).
+
+    IMPORTANTE: se filtran las rutas cuyo origen o destino no exista como
+    nodo en la red actual (data/processed/waypoints.csv), ya que de lo
+    contrario esos vuelos no podrían asignarse a ninguna ruta. Esto es
+    consecuencia directa de la limitación de conectividad ya documentada
+    en la bitácora (los aeropuertos aún no están conectados a la red de
+    waypoints extraída de ENR3).
+    """
+    routes_weekly = pd.read_csv(demand_weekly_csv)
+
+    nodes = set(G.nodes)
+    before = len(routes_weekly)
+    routes_weekly = routes_weekly[
+        routes_weekly["origin"].isin(nodes) & routes_weekly["destination"].isin(nodes)
+    ]
+    after = len(routes_weekly)
+
+    print(f"\nDemanda real cargada desde {demand_weekly_csv}: {before} rutas totales.")
+    print(f"De esas, {after} tienen tanto origen como destino presentes en la red "
+          f"actual de {G.number_of_nodes()} waypoints.")
+    if after == 0:
+        print("AVISO CRÍTICO: ninguna ruta de demanda real coincide con nodos de la "
+              "red. Esto es esperado si la red (extraída de ENR3, solo waypoints "
+              "de ruta) no incluye códigos de aeropuerto (SKBO, SKRG, etc.) como "
+              "nodos -- ver pendiente #2 de la bitácora (conectar aeropuertos a la "
+              "red). Sin esto, el modelo no puede asignar vuelos reales todavía.")
+        return pd.DataFrame(columns=["flight_id", "origin", "destination", "time_slot"])
+
+    if before > 0 and after < before:
+        dropped_examples = pd.read_csv(demand_weekly_csv)
+        dropped_examples = dropped_examples[
+            ~(dropped_examples["origin"].isin(nodes) & dropped_examples["destination"].isin(nodes))
+        ].head(5)
+        print(f"Ejemplo de rutas descartadas por no estar en la red:\n{dropped_examples}")
+
+    flights_raw = synthesize_weekly_flights(routes_weekly, seed=seed)
+    flights_df = flights_raw[["flight_id", "origin", "destination"]].copy()
+    flights_df["time_slot"] = flights_raw["week_day"] * 24 + flights_raw["dep_hour"]
+
+    print(f"Vuelos individuales sintéticos generados a partir de la demanda real: "
+          f"{len(flights_df)}")
+    return flights_df
+
+
+def assign_flights_shortest_path(routes_df, flights_df):
     shortest = routes_df[routes_df["route_idx"] == 0].set_index(["origin", "destination"])
-
     rows = []
     for _, f in flights_df.iterrows():
         key = (f["origin"], f["destination"])
@@ -57,11 +98,7 @@ def assign_flights_shortest_path(routes_df: pd.DataFrame, flights_df: pd.DataFra
     return pd.DataFrame(rows)
 
 
-def compute_flow_from_assignment(assignment: pd.DataFrame, flights_df: pd.DataFrame,
-                                  level=DEFAULT_LEVEL):
-    """Convierte la asignación de rutas (una fila por vuelo, con su `path`)
-    en el formato f^h,t_v que necesita apf_growth.compute_excess_traffic():
-    columnas [waypoint_id, level, time_slot, flights]."""
+def compute_flow_from_assignment(assignment, flights_df, level=DEFAULT_LEVEL):
     merged = assignment.merge(flights_df[["flight_id", "time_slot"]], on="flight_id")
     rows = []
     for _, row in merged.iterrows():
@@ -73,52 +110,25 @@ def compute_flow_from_assignment(assignment: pd.DataFrame, flights_df: pd.DataFr
     return flow_long.groupby(["waypoint_id", "level", "time_slot"]).size().reset_index(name="flights")
 
 
-def compute_extra_distance(assignment: pd.DataFrame, routes_df: pd.DataFrame):
-    """Ecuación (25)-(26): suma de (L(r) - D(a)) para todos los vuelos asignados."""
-    merged = assignment.merge(
-        routes_df[["origin", "destination", "route_idx", "length_km", "great_circle_km"]],
-        on="route_idx", how="left"
-    )
-    # (el merge de arriba no filtra por origin/destination porque assignment no
-    # los trae; en la práctica usa join sobre flight -> routes_df completo)
-    return (routes_df["length_km"] - routes_df["great_circle_km"]).sum()
-
-
-def run_lower_level(G: nx.Graph, flights_df: pd.DataFrame, wp_cap_df: pd.DataFrame,
-                     apt_cap_df: pd.DataFrame, k=3, use_milp=True):
-    """Ejecuta el nivel inferior completo: genera rutas candidatas (K-shortest
-    paths) y asigna vuelos, ya sea con el MILP (Ec. 32-40) o con la
-    asignación baseline por ruta más corta si MILP no está disponible."""
+def run_lower_level(G, flights_df, wp_cap_df, apt_cap_df, k=3, use_milp=True):
     routes_df = build_candidate_routes(G, flights_df, k=k)
-
     if routes_df.empty:
-        return pd.DataFrame(), routes_df, 0.0
+        return pd.DataFrame(), routes_df, None
 
     if use_milp and MILP_AVAILABLE:
         result = solve_path_assignment(routes_df, flights_df, wp_cap_df, apt_cap_df)
         assignment = result["assignment"]
-        print(f"  MILP resuelto: estado={result['status']}, "
-              f"objetivo={result['objective_value']}")
+        print(f"  MILP resuelto: estado={result['status']}, objetivo={result['objective_value']}")
     else:
         if use_milp and not MILP_AVAILABLE:
-            print("  Aviso: PuLP no está instalado (pip install pulp). "
-                  "Usando asignación baseline por ruta más corta en su lugar.")
+            print("  Aviso: PuLP no está instalado. Usando asignación baseline.")
         assignment = assign_flights_shortest_path(routes_df, flights_df)
 
-    # Añadir length/great_circle a cada fila asignada, para poder calcular
-    # tanto el exceso de tráfico como la distancia adicional después.
-    lookup = routes_df.set_index(["route_idx"])[["length_km", "great_circle_km"]]
-
-    return assignment, routes_df, lookup
+    return assignment, routes_df, None
 
 
-def run_upper_level(G: nx.Graph, flow_df: pd.DataFrame, wp_cap_df: pd.DataFrame,
-                     assignment: pd.DataFrame, routes_df: pd.DataFrame,
+def run_upper_level(G, flow_df, wp_cap_df, assignment, routes_df,
                      attraction_radius_km=150, m_new_nodes=2, grid_resolution_deg=0.5):
-    """Ejecuta el nivel superior: calcula pesos (Ec. 1-7), genera la malla de
-    candidatos, selecciona los mejores m, y los conecta a la red (Ec. 8 +
-    límites de longitud/ángulo). NO ejecuta aún la optimización de posición
-    vía APF (Ec. 13-19) sobre cada nuevo punto -- ver optimize_new_nodes()."""
     Ov = apf.compute_excess_traffic(G, flow_df, wp_cap_df)
     wv1 = apf.compute_wv1(Ov)
 
@@ -128,7 +138,6 @@ def run_upper_level(G: nx.Graph, flow_df: pd.DataFrame, wp_cap_df: pd.DataFrame,
     )
     qf = apf.compute_flow_weighted_path_factor(routes_assigned) if not routes_assigned.empty else pd.Series(dtype=float)
     wv2 = apf.compute_wv2(qf)
-
     weights = apf.combine_weights(wv1, wv2)
 
     if Ov.sum() == 0:
@@ -136,32 +145,21 @@ def run_upper_level(G: nx.Graph, flow_df: pd.DataFrame, wp_cap_df: pd.DataFrame,
         return [], weights
 
     grid = apf.generate_virtual_grid(G, resolution_deg=grid_resolution_deg)
-    # Pedimos más candidatos de los estrictamente necesarios (margen 4x), porque
-    # algunos de los mejores por peso pueden terminar con menos de 2 conexiones
-    # válidas y descartarse -- así no nos quedamos sin nodos nuevos por eso.
-    top_candidates = apf.select_top_candidates(
-        G, grid, weights, attraction_radius_km=attraction_radius_km, m=m_new_nodes * 4
-    )
-
+    top_candidates = apf.select_top_candidates(G, grid, weights, attraction_radius_km=attraction_radius_km,
+                                                m=m_new_nodes * 4)
     new_nodes = []
     for i, row in top_candidates.iterrows():
         if len(new_nodes) >= m_new_nodes:
             break
-        connections = apf.connect_new_waypoint(
-            G, row["lat"], row["lon"], attraction_radius_km=attraction_radius_km
-        )
+        connections = apf.connect_new_waypoint(G, row["lat"], row["lon"], attraction_radius_km=attraction_radius_km)
         if len(connections) < 2:
-            continue  # necesita al menos 2 conexiones para ser un punto útil
+            continue
         node_id = f"NEW{len(G.nodes) + i}"
-        new_nodes.append({"node_id": node_id, "lat": row["lat"], "lon": row["lon"],
-                          "connections": connections})
-
+        new_nodes.append({"node_id": node_id, "lat": row["lat"], "lon": row["lon"], "connections": connections})
     return new_nodes, weights
 
 
-def add_new_nodes_to_graph(G: nx.Graph, new_nodes: list):
-    """Añade los nuevos waypoints (ya con posición optimizada) y sus
-    conexiones al grafo."""
+def add_new_nodes_to_graph(G, new_nodes):
     for n in new_nodes:
         G.add_node(n["node_id"], lat=n["lat"], lon=n["lon"], tipo="nuevo")
         for c in n["connections"]:
@@ -169,9 +167,7 @@ def add_new_nodes_to_graph(G: nx.Graph, new_nodes: list):
             G.add_edge(n["node_id"], c, length_km=d, airway_id="NUEVO")
 
 
-def check_convergence(history: list, tol_excess=0.03, tol_distance=0.005):
-    """Criterio I (Sección 3.2): variación de exceso total < 3% Y variación
-    de distancia adicional total < 0.5% en dos iteraciones consecutivas."""
+def check_convergence(history, tol_excess=0.03, tol_distance=0.005):
     if len(history) < 2:
         return False
     prev, curr = history[-2], history[-1]
@@ -182,22 +178,12 @@ def check_convergence(history: list, tol_excess=0.03, tol_distance=0.005):
     return excess_change < tol_excess and dist_change < tol_distance
 
 
-def run_iterative_optimization(G: nx.Graph, flights_df: pd.DataFrame,
-                                wp_cap_df: pd.DataFrame, apt_cap_df: pd.DataFrame,
-                                max_iterations=5, k=3, use_milp=True,
-                                grow_network=True):
-    """Bucle principal: nivel inferior -> nivel superior -> repetir, hasta
-    convergencia o max_iterations. Esta es la Escena 3 del artículo
-    (optimización colaborativa) si grow_network=True, o la Escena 2 (red
-    fija, solo optimización de rutas) si grow_network=False."""
+def run_iterative_optimization(G, flights_df, wp_cap_df, apt_cap_df, max_iterations=5,
+                                k=3, use_milp=True, grow_network=True):
     history = []
-
     for it in range(1, max_iterations + 1):
         print(f"\n=== Iteración {it} (nodos actuales: {G.number_of_nodes()}) ===")
-
-        assignment, routes_df, _ = run_lower_level(
-            G, flights_df, wp_cap_df, apt_cap_df, k=k, use_milp=use_milp
-        )
+        assignment, routes_df, _ = run_lower_level(G, flights_df, wp_cap_df, apt_cap_df, k=k, use_milp=use_milp)
 
         if assignment.empty:
             print("  Sin asignación posible; revisa conectividad origen-destino.")
@@ -216,44 +202,59 @@ def run_iterative_optimization(G: nx.Graph, flights_df: pd.DataFrame,
             break
 
         if not grow_network:
-            continue  # Escenario 2: no se crece la red, solo se repite la asignación
+            continue
 
         new_nodes, weights = run_upper_level(G, flow_df, wp_cap_df, assignment, routes_df)
         if not new_nodes:
             print("  No se generaron nodos nuevos en esta iteración.")
             continue
 
-        print(f"  Añadiendo {len(new_nodes)} nodo(s) nuevo(s): "
-              f"{[n['node_id'] for n in new_nodes]}")
+        print(f"  Añadiendo {len(new_nodes)} nodo(s) nuevo(s): {[n['node_id'] for n in new_nodes]}")
         add_new_nodes_to_graph(G, new_nodes)
 
     return G, history
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Ciclo bi-nivel completo (artículo Sui et al.)")
+    parser = argparse.ArgumentParser(description="Ciclo bi-nivel completo con demanda real")
     parser.add_argument("--waypoints", default="data/processed/waypoints.csv")
     parser.add_argument("--segments", default="data/processed/segments.csv")
+    parser.add_argument("--demand", default="data/processed/demand_weekly.csv",
+                         help="CSV de demanda semanal real generado por run_demand_extraction.py")
     parser.add_argument("--max-iterations", type=int, default=5)
-    parser.add_argument("--k", type=int, default=3, help="Número de rutas candidatas (K-shortest)")
-    parser.add_argument("--no-milp", action="store_true", help="Forzar asignación baseline sin PuLP")
-    parser.add_argument("--fixed-network", action="store_true",
-                         help="Escenario 2: no crecer la red, solo optimizar rutas")
+    parser.add_argument("--k", type=int, default=3)
+    parser.add_argument("--no-milp", action="store_true")
+    parser.add_argument("--fixed-network", action="store_true")
+    parser.add_argument("--use-demo-demand", action="store_true",
+                         help="Usar la demanda sintética de demostración en vez de la real")
+    parser.add_argument("--no-airport-connection", action="store_true",
+                         help="No conectar aeropuertos a la red (para comparar con/sin esa mejora)")
     args = parser.parse_args()
 
     G = build_network(args.waypoints, args.segments)
 
-    # Demo de vuelos sintéticos si no se ha integrado aún la demanda real
-    nodes = list(G.nodes)
-    flights_df = pd.DataFrame({
-        "flight_id": [f"F{i}" for i in range(20)],
-        "origin": [nodes[0]] * 20,
-        "destination": [nodes[-1]] * 20,
-        "time_slot": [i % 24 for i in range(20)],
-    })
+    if not args.no_airport_connection:
+        G, _ = connect_airports_to_network(G, k_nearest=2, max_distance_km=200)
+
+    if args.use_demo_demand:
+        nodes = list(G.nodes)
+        flights_df = pd.DataFrame({
+            "flight_id": [f"F{i}" for i in range(20)],
+            "origin": [nodes[0]] * 20,
+            "destination": [nodes[-1]] * 20,
+            "time_slot": [i % 24 for i in range(20)],
+        })
+    else:
+        flights_df = load_real_demand(args.demand, G)
+        if flights_df.empty:
+            print("\nNo hay vuelos reales asignables con la red actual. "
+                  "Usa --use-demo-demand para probar con datos sintéticos mientras "
+                  "se resuelve la conexión aeropuerto-waypoint (pendiente #2 de la bitácora).")
+            return
 
     wp_cap_df = generate_waypoint_capacity(list(G.nodes), per_hour=5, levels=[DEFAULT_LEVEL])
-    apt_cap_df = generate_airport_capacity([nodes[0], nodes[-1]], dep_per_hour=15, arr_per_hour=15)
+    airports = list(set(flights_df["origin"]) | set(flights_df["destination"]))
+    apt_cap_df = generate_airport_capacity(airports, dep_per_hour=50, arr_per_hour=50)
 
     G_final, history = run_iterative_optimization(
         G, flights_df, wp_cap_df, apt_cap_df,
@@ -265,7 +266,10 @@ def main():
     print(pd.DataFrame(history))
     print(f"\nRed final: {G_final.number_of_nodes()} waypoints, {G_final.number_of_edges()} segmentos.")
 
-    plot_network(G_final, "outputs/network_map_final.html")
+    try:
+        plot_network(G_final, "outputs/network_map_final.html")
+    except ImportError:
+        print("(folium no disponible en este entorno; omite el mapa)")
 
 
 if __name__ == "__main__":

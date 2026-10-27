@@ -47,6 +47,7 @@ TOL_DISTANCE = 0.005       # Criterio I: variación de la distancia adicional < 
 TOL_CAPACITY_RATIO = 0.05  # Criterio II: exceso horario <= 5 % de la capacidad
 L_MIN_KM = 7.3             # longitud mínima de segmento
 THETA_MIN_DEG = 15.0       # ángulo mínimo entre segmentos adyacentes
+GRID_RESOLUTION_DEG = 0.2  # resolución de la malla de waypoints virtuales (Sec. 4.1.1)
 
 
 def load_real_demand(demand_weekly_csv: str, G: nx.Graph, seed: int = 42):
@@ -179,13 +180,13 @@ def add_new_nodes_to_graph(G, new_nodes):
 
 
 def run_upper_level(G, flow_df, wp_cap_df, assignment, routes_df, flights_df,
-                    attraction_radius_km=150, m_new_nodes=2, grid_resolution_deg=0.5,
-                    prd_zones=None, seed=0):
+                    attraction_radius_km=150, m_new_nodes=2, grid_resolution_deg=GRID_RESOLUTION_DEG,
+                    prd_zones=None, seed=0, use_alpha_shape=True, alpha_radius_km=None):
     """Nivel superior: elige dónde crecer (pesos Ec. 1-7), conecta cada nodo
     nuevo (Ec. 8 + longitud + ángulo), y OPTIMIZA su posición con la APF
-    (Ec. 13-19) manteniendo la topología fija. Cada nodo aceptado se añade a G
-    de inmediato, así el siguiente candidato ya lo ve como vecino y no se
-    superponen. Devuelve (nuevos_nodos, pesos)."""
+    (Ec. 13-19) manteniendo la topología fija. Los nodos nuevos solo se
+    conectan a waypoints existentes (Sec. 4.1.2) y se añaden a G todos juntos
+    al terminar. Devuelve (nuevos_nodos, pesos)."""
     Ov = apf.compute_excess_traffic(G, flow_df, wp_cap_df)
     wv1 = apf.compute_wv1(Ov)
 
@@ -199,7 +200,23 @@ def run_upper_level(G, flow_df, wp_cap_df, assignment, routes_df, flights_df,
         print("  Sin tráfico excedente en ningún waypoint: no se generan nodos nuevos.")
         return [], weights
 
-    grid = apf.generate_virtual_grid(G, resolution_deg=grid_resolution_deg)
+    # Sec. 4.1.1: contorno del espacio aéreo por alpha-shape y malla virtual
+    # dentro de su caja delimitadora (solo los centros de celda dentro del contorno).
+    boundary = None
+    if use_alpha_shape:
+        try:
+            from airspace_boundary import compute_airspace_boundary
+            boundary = compute_airspace_boundary(G, alpha_radius_km)
+            G.graph["boundary"] = boundary.polygon
+            print(f"  Contorno {boundary.method}: R = {boundary.radius_km:.0f} km "
+                  f"({'automático' if boundary.auto else 'manual'}), "
+                  f"{boundary.n_parts} polígono(s), {boundary.n_points} nodos")
+        except ImportError as e:
+            print(f"  Aviso: no se pudo usar alpha-shape ({e}); se usa el rectángulo "
+                  f"delimitador. Instala scipy y shapely (pip install -r requirements.txt).")
+    grid = apf.generate_virtual_grid(G, resolution_deg=grid_resolution_deg,
+                                     boundary=boundary.polygon if boundary else None)
+    print(f"  Malla virtual de {grid_resolution_deg}°: {len(grid)} puntos candidatos")
     top_candidates = apf.select_top_candidates(G, grid, weights, attraction_radius_km=attraction_radius_km,
                                                 m=m_new_nodes * 4)
     paths = assignment["path"].tolist()
@@ -232,12 +249,17 @@ def run_upper_level(G, flow_df, wp_cap_df, assignment, routes_df, flights_df,
         G.graph["next_new_id"] = G.graph.get("next_new_id", 0) + 1
         node = {"node_id": node_id, "lat": opt["lat"], "lon": opt["lon"], "connections": conns,
                 "apf": opt}
-        add_new_nodes_to_graph(G, [node])
         new_nodes.append(node)
         moved = great_circle_distance_km(lat, lon, opt["lat"], opt["lon"])
-        print(f"  {node_id}: {len(conns)} conexiones, APF movió {moved:.1f} km "
+        print(f"  {node_id} ({opt['lat']:.2f}, {opt['lon']:.2f}): {len(conns)} conexiones, APF movió {moved:.1f} km "
               f"({opt['iterations']} it., {opt['perturbations']} perturb.), "
               f"costo de ruta {opt['cost0']:,.0f} -> {opt['cost']:,.0f} km-vuelo")
+
+    # Los nodos nuevos de esta iteración se agregan juntos al final: el artículo
+    # exige (Sec. 4.1.2, regla de longitud) que los waypoints a los que se
+    # conecta un nodo nuevo sean waypoints EXISTENTES, así que ningún nodo
+    # nuevo puede conectarse a otro nodo nuevo de la misma iteración.
+    add_new_nodes_to_graph(G, new_nodes)
     return new_nodes, weights
 
 
@@ -273,7 +295,8 @@ def check_convergence(history, tol_excess=TOL_EXCESS, tol_distance=TOL_DISTANCE,
 def run_iterative_optimization(G, flights_df, wp_cap_df, apt_cap_df, max_iterations=5,
                                 k=3, use_milp=True, grow_network=True,
                                 wp_capacity_per_hour=5, prd_zones=None, seed=0,
-                                m_new_nodes=2):
+                                m_new_nodes=2, grid_resolution_deg=GRID_RESOLUTION_DEG,
+                                use_alpha_shape=True, alpha_radius_km=None):
     history = []
     for it in range(1, max_iterations + 1):
         print(f"\n=== Iteración {it} (nodos actuales: {G.number_of_nodes()}) ===")
@@ -318,7 +341,10 @@ def run_iterative_optimization(G, flights_df, wp_cap_df, apt_cap_df, max_iterati
             continue
 
         new_nodes, weights = run_upper_level(G, flow_df, wp_cap_df, assignment, routes_df, flights_df,
-                                             m_new_nodes=m_new_nodes, prd_zones=prd_zones, seed=seed + it)
+                                             m_new_nodes=m_new_nodes, prd_zones=prd_zones, seed=seed + it,
+                                             grid_resolution_deg=grid_resolution_deg,
+                                             use_alpha_shape=use_alpha_shape,
+                                             alpha_radius_km=alpha_radius_km)
         history[-1]["added"] = len(new_nodes)
         if not new_nodes:
             print("  No se generaron nodos nuevos en esta iteración.")
@@ -352,6 +378,13 @@ def main():
                          help="CSV opcional lat,lon,radius_km con zonas PRD (prohibidas/restringidas/peligrosas)")
     parser.add_argument("--m-new-nodes", type=int, default=2,
                          help="Nodos nuevos por iteración")
+    parser.add_argument("--grid-resolution", type=float, default=GRID_RESOLUTION_DEG,
+                         help="Resolución (grados) de la malla de waypoints virtuales; el artículo usa 0.2")
+    parser.add_argument("--alpha-radius-km", type=float, default=None,
+                         help="Radio circunscrito del alpha-shape (R=1/alpha). Por defecto se usa el "
+                              "radio crítico: el menor que deja dentro a todos los nodos de la red")
+    parser.add_argument("--no-alpha-shape", action="store_true",
+                         help="No usar el contorno alpha-shape: malla sobre el rectángulo delimitador")
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
 
@@ -389,7 +422,8 @@ def main():
         max_iterations=args.max_iterations, k=args.k,
         use_milp=not args.no_milp, grow_network=not args.fixed_network,
         wp_capacity_per_hour=args.wp_capacity, prd_zones=prd_zones, seed=args.seed,
-        m_new_nodes=args.m_new_nodes,
+        m_new_nodes=args.m_new_nodes, grid_resolution_deg=args.grid_resolution,
+        use_alpha_shape=not args.no_alpha_shape, alpha_radius_km=args.alpha_radius_km,
     )
 
     print("\n=== Resumen final ===")
@@ -401,7 +435,7 @@ def main():
     hist_df.to_csv("outputs/convergence_history.csv", index=False)
 
     try:
-        plot_network(G_final, "outputs/network_map_final.html")
+        plot_network(G_final, "outputs/network_map_final.html", boundary=G_final.graph.get("boundary"))
     except ImportError:
         print("(folium no disponible en este entorno; omite el mapa)")
 

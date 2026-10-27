@@ -44,7 +44,9 @@ def build_network(waypoints_csv: str, segments_csv: str) -> nx.Graph:
     return G
 
 
-def plot_network(G: nx.Graph, output_html: str = "outputs/network_map.html"):
+def plot_network(G: nx.Graph, output_html: str = "outputs/network_map.html", boundary=None):
+    """Mapa HTML de la red. boundary: contorno del espacio aéreo (polígono
+    shapely del alpha-shape), que se dibuja en verde si se entrega."""
     import folium
 
     # Crear automáticamente la carpeta de salida si no existe, para no
@@ -56,7 +58,14 @@ def plot_network(G: nx.Graph, output_html: str = "outputs/network_map.html"):
     lats = [d["lat"] for _, d in G.nodes(data=True)]
     lons = [d["lon"] for _, d in G.nodes(data=True)]
     center = [sum(lats) / len(lats), sum(lons) / len(lons)]
-    m = folium.Map(location=center, zoom_start=5, tiles="cartodbpositron")
+    # OpenStreetMap no pide clave de API (cartodbpositron ahora sí la pide y
+    # el mapa salía sin fondo).
+    m = folium.Map(location=center, zoom_start=5, tiles="OpenStreetMap")
+    if boundary is not None:
+        from airspace_boundary import polygon_rings_latlon
+        for ring in polygon_rings_latlon(boundary):
+            folium.Polygon(locations=ring, color="green", weight=2, fill=True,
+                           fill_opacity=0.05, tooltip="Contorno alpha-shape").add_to(m)
     for u, v, data in G.edges(data=True):
         coords = [(G.nodes[u]["lat"], G.nodes[u]["lon"]), (G.nodes[v]["lat"], G.nodes[v]["lon"])]
         folium.PolyLine(coords, color="steelblue", weight=1.5, opacity=0.7).add_to(m)

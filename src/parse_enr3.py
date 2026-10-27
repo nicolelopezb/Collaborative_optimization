@@ -40,17 +40,50 @@ import pandas as pd
  
 FILE_SPLIT_RE = re.compile(r"===== ARCHIVO: (.+?) =====")
  
+# Un punto significativo en el texto extraído de los ENR 3 tiene este aspecto:
+#     ▲OROSA                     (ENR 3.1: símbolo pegado al nombre)
+#     ▲ LONAX                    (ENR 3.3: con espacio)
+#     ∆ VUMBA                    (punto de notificación a solicitud: otro símbolo)
+#     ▲PUERTO CARREÑO            (estaciones VOR: nombre de varias palabras ...)
+#     VOR/DME ' PTC'             (... y una línea con el tipo e identificador)
+#     06°10'53''N
+#     067°29'44''W
+# El patrón anterior solo aceptaba "▲NOMBRE" de 3 a 8 letras seguido de la
+# coordenada, y por eso descartaba ~2/3 de los puntos (ENR 3.3 completo,
+# los puntos con ∆ y las estaciones VOR).
 WAYPOINT_RE = re.compile(
-    r"▲([A-ZÀ-Ú]{3,8})\s+"
+    r"[▲∆]\s*([A-ZÀ-ÚÑ0-9][A-ZÀ-ÚÑ0-9 .\-]*?"
+    r"(?:[ \t]*\n[A-ZÀ-ÚÑ][A-ZÀ-ÚÑ .\-]*?)?)[ \t]*\n"      # nombre en 1 o 2 líneas
+    r"(?:[A-Z/]{2,12}[ \t]*'[^'\n]*'[^\n]*\n)?"
     r"(\d{1,3})°(\d{2})'(\d{1,3})''([NS])\s+"
     r"(\d{1,3})°(\d{2})'(\d{1,3})''([EW])"
 )
- 
+
+# Encabezado repetido en cada página (termina en la fila de numeración
+# "1 2 3 4 5 6 7") y pie de página. Cuando una página corta un punto a la
+# mitad, el nombre queda antes del pie y las coordenadas después del
+# encabezado de la página siguiente; quitarlos los vuelve a juntar.
+PAGE_SPLIT_RE = re.compile(r"--- página \d+ ---")
+PAGE_HEADER_RE = re.compile(r"\A[\s\S]*?^\s*1 2 3 4 5 6 7\s*$\n?", re.MULTILINE)
+PAGE_FOOTER_RE = re.compile(r"^AIS COLOMBIA.*$\n?", re.MULTILINE)
+
 ROUTE_ID_RE = re.compile(
-    r"(A\d{2,3}|B\d{2,3}|G\d{2,3}|L\d{2,3}|M\d{2,3}|N\d{2,3}|"
-    r"P\d{2,3}|R\d{2,3}|U[A-Z]\d{2,3}|W\d{2,3})",
+    r"(A\d{1,3}|B\d{1,3}|G\d{1,3}|L\d{1,3}|M\d{1,3}|N\d{1,3}|"
+    r"P\d{1,3}|R\d{1,3}|U[A-Z]\d{1,3}|V\d{1,3}|W\d{1,3})",
     re.IGNORECASE,
 )
+
+
+def clean_pages(content):
+    """Quita encabezados y pies de página del texto de un archivo de ruta y
+    une las páginas, para que cada punto significativo quede contiguo."""
+    pages = PAGE_SPLIT_RE.split(content)
+    cleaned = []
+    for page in pages:
+        page = PAGE_HEADER_RE.sub("", page, count=1)
+        page = PAGE_FOOTER_RE.sub("", page)
+        cleaned.append(page.strip("\n"))
+    return "\n".join(cleaned) + "\n"
  
  
 def dms_to_decimal(deg, minutes, seconds, hemisphere):
@@ -62,13 +95,13 @@ def dms_to_decimal(deg, minutes, seconds, hemisphere):
  
  
 def route_id_from_filename(filename):
-    """Extrae el designador de ruta (ej. A319) del nombre del archivo."""
-    match = ROUTE_ID_RE.search(os.path.basename(filename))
-    if match:
-        return match.group(1).upper()
-    return os.path.splitext(os.path.basename(filename))[0]
- 
- 
+    """Designador de ruta (ej. A319, UL201, Z001) = último elemento del
+    nombre del archivo ('ENR 3.3 UL201.pdf'). La lista fija de prefijos que
+    había antes no reconocía UM, UN, UP, UQ, UZ ni Z."""
+    stem = os.path.splitext(os.path.basename(filename))[0]
+    return stem.split()[-1].upper() if stem.split() else stem
+
+
 def split_into_files(full_text):
     """Divide el texto combinado en bloques por archivo, usando el
     separador '===== ARCHIVO: ... =====' que genera explore_pdf_batch.py."""
@@ -93,21 +126,31 @@ def parse_one_file(all_text_path: str, waypoints: dict, segments: list, empty_fi
  
     for filename, content in files.items():
         route_id = route_id_from_filename(filename)
-        found = WAYPOINT_RE.findall(content)
- 
+        found = WAYPOINT_RE.findall(clean_pages(content))
+
         if not found:
             empty_files.append(f"{all_text_path} :: {filename}")
             continue
- 
+
         sequence = []
         for name, d1, m1, s1, h1, d2, m2, s2, h2 in found:
+            name = re.sub(r"\s+", " ", name).strip()
             lat = dms_to_decimal(d1, m1, s1, h1)
             lon = dms_to_decimal(d2, m2, s2, h2)
+            if name in waypoints and (abs(waypoints[name][0] - lat) > 0.02
+                                      or abs(waypoints[name][1] - lon) > 0.02):
+                # Mismo nombre, otra ubicación (>~2 km): no se sobrescribe
+                # en silencio; se avisa para revisarlo a mano.
+                name_collisions.append((name, waypoints[name], (lat, lon), route_id))
             waypoints.setdefault(name, (lat, lon))
-            sequence.append(name)
- 
+            if not sequence or sequence[-1] != name:
+                sequence.append(name)
+
         for a, b in zip(sequence[:-1], sequence[1:]):
             segments.append((a, b, route_id))
+
+
+name_collisions = []
  
  
 def save_csv(waypoints, segments, out_dir="data/processed"):
@@ -164,6 +207,12 @@ def main():
     print(f"\nWaypoints únicos encontrados (combinando todos los archivos): {len(wp_df)}")
     print(f"Segmentos generados (combinando todos los archivos): {len(seg_df)}")
     print(f"Guardado en: {wp_path} y {seg_path}\n")
+ 
+    if name_collisions:
+        print(f"Aviso: {len(name_collisions)} nombre(s) de punto aparecen con coordenadas "
+              f"distintas (se conserva la primera; revisar):")
+        for n, c1, c2, r in name_collisions[:10]:
+            print(f"  - {n}: {c1} vs {c2} (ruta {r})")
  
     if empty_files:
         print(f"Aviso: {len(empty_files)} archivo(s) individuales dentro de esos "

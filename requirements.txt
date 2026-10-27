@@ -1,4 +1,5 @@
 networkx
+scipy
 numpy
 pandas
 geopandas

@@ -133,13 +133,23 @@ def combine_weights(wv1: pd.Series, wv2: pd.Series, alpha=0.7, beta=0.3) -> pd.S
 # 4.1.1: Generación de la malla de puntos virtuales candidatos
 # ---------------------------------------------------------------------------
 
-def generate_virtual_grid(G: nx.Graph, resolution_deg=0.2, margin_deg=0.5):
+def generate_virtual_grid(G: nx.Graph, resolution_deg=0.2, margin_deg=0.5, boundary=None):
     """Genera puntos virtuales candidatos en una malla regular de resolución
-    0.2° (~22 km), sobre el rectángulo delimitador de los waypoints
-    existentes (ver nota de simplificación al inicio del archivo).
+    0.2° (~22 km).
+
+    boundary: contorno del espacio aéreo (polígono shapely, ver
+    airspace_boundary.compute_airspace_boundary). Si se da, se sigue el
+    artículo: la malla se parte sobre la caja delimitadora del contorno
+    alpha-shape y solo se conservan los centros de celda dentro de él.
+    Si es None, se usa el rectángulo delimitador de los waypoints (versión
+    simplificada anterior) con un margen de margin_deg.
 
     Devuelve una lista de tuplas (lat, lon) candidatas.
     """
+    if boundary is not None:
+        from airspace_boundary import grid_inside_boundary
+        return grid_inside_boundary(boundary, resolution_deg)
+
     lats = [d["lat"] for _, d in G.nodes(data=True)]
     lons = [d["lon"] for _, d in G.nodes(data=True)]
 
@@ -158,19 +168,37 @@ def select_top_candidates(G: nx.Graph, virtual_points, weights: pd.Series,
     waypoints existentes dentro del radio de atracción r) y devuelve los m
     puntos virtuales con mayor peso total, como preliminarmente seleccionados
     para convertirse en nuevos waypoints."""
-    scored = []
-    for lat, lon in virtual_points:
-        total_weight = 0.0
-        for node, data in G.nodes(data=True):
-            d = great_circle_distance_km(lat, lon, data["lat"], data["lon"])
-            if d < attraction_radius_km:
-                total_weight += weights.get(node, 0.0)
-        if total_weight > 0:
-            scored.append({"lat": lat, "lon": lon, "W": total_weight})
-
-    if not scored:
+    # Versión vectorizada (misma fórmula que el bucle original, distancia de
+    # gran círculo y d < r estricto): solo cuentan los waypoints con peso > 0,
+    # y los pares punto-waypoint se calculan por bloques con numpy.
+    if len(virtual_points) == 0:
         return pd.DataFrame(columns=["lat", "lon", "W"])
-    scored_df = pd.DataFrame(scored).sort_values("W", ascending=False)
+    nodes = [(d["lat"], d["lon"], float(weights.get(n, 0.0))) for n, d in G.nodes(data=True)]
+    nodes = [t for t in nodes if t[2] > 0]
+    if not nodes:
+        return pd.DataFrame(columns=["lat", "lon", "W"])
+    n_lat = np.radians(np.array([t[0] for t in nodes]))
+    n_lon = np.radians(np.array([t[1] for t in nodes]))
+    n_w = np.array([t[2] for t in nodes])
+
+    pts = np.asarray(virtual_points, dtype=float)
+    p_lat, p_lon = np.radians(pts[:, 0]), np.radians(pts[:, 1])
+    total = np.zeros(len(pts))
+    block = 1000
+    for s in range(0, len(pts), block):
+        la1 = p_lat[s:s + block, None]
+        lo1 = p_lon[s:s + block, None]
+        a = (np.sin((n_lat[None, :] - la1) / 2) ** 2
+             + np.cos(la1) * np.cos(n_lat[None, :]) * np.sin((n_lon[None, :] - lo1) / 2) ** 2)
+        dist = 2 * EARTH_RADIUS_KM * np.arcsin(np.sqrt(np.clip(a, 0.0, 1.0)))
+        total[s:s + block] = ((dist < attraction_radius_km) * n_w[None, :]).sum(axis=1)
+
+    keep = total > 0
+    if not keep.any():
+        return pd.DataFrame(columns=["lat", "lon", "W"])
+    scored_df = pd.DataFrame({"lat": pts[keep, 0], "lon": pts[keep, 1], "W": total[keep]})
+    # orden estable: ante empates de peso se conserva el orden de la malla
+    scored_df = scored_df.sort_values("W", ascending=False, kind="mergesort")
     return scored_df.head(m).reset_index(drop=True)
 
 

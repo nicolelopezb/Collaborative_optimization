@@ -110,9 +110,18 @@ def solve_path_assignment(routes_df: pd.DataFrame, flights_df: pd.DataFrame,
     # primera versión no diferenciamos explícitamente el nivel asignado a
     # cada vuelo -- simplificación documentada, ver README de próximos pasos)
 
+    # Solo se penaliza el exceso en nodos que tienen capacidad de waypoint
+    # definida. Los aeropuertos (origen/destino de las rutas) no la tienen: su
+    # límite son las restricciones Q_dep / Q_arr de abajo (Ec. 38-40). Si se
+    # trataran como waypoints con capacidad 0, el modelo vería un "exceso"
+    # enorme e inevitable en cada hub.
+    capacity_nodes = set(waypoint_cap_df["waypoint_id"])
+
     excess_vars = {}
     AO_terms = []
     for (wp, t), var_list in waypoint_time_flights.items():
+        if wp not in capacity_nodes:
+            continue
         cap = cap_lookup.get((wp, t), 0)
         e = pulp.LpVariable(f"excess_{wp}_{t}", lowBound=0)
         prob += e >= pulp.lpSum(var_list) - cap

@@ -55,6 +55,24 @@ def compute_excess_traffic(G: nx.Graph, flow_df: pd.DataFrame, cap_df: pd.DataFr
     return Ov
 
 
+def compute_max_excess_ratio(flow_df: pd.DataFrame, cap_df: pd.DataFrame, tol=0.05):
+    """Criterio II de convergencia (Sec. 3.2 del artículo): el tráfico
+    excedente horario en cada waypoint no debe superar el 5 % de su capacidad,
+    para que el resto pueda resolverse con medidas tácticas de ATC.
+
+    Para cada (waypoint, nivel, franja) calcula max(f - C, 0) / C.
+    Devuelve (max_ratio, n_violations): la razón máxima observada y cuántas
+    combinaciones (waypoint, nivel, franja) superan `tol`.
+    """
+    merged = flow_df.merge(cap_df, on=["waypoint_id", "level", "time_slot"], how="right")
+    merged["flights"] = merged["flights"].fillna(0)
+    merged = merged[merged["capacity"] > 0]
+    if merged.empty:
+        return 0.0, 0
+    ratio = (merged["flights"] - merged["capacity"]).clip(lower=0) / merged["capacity"]
+    return float(ratio.max()), int((ratio > tol).sum())
+
+
 def compute_wv1(Ov: pd.Series) -> pd.Series:
     """Ecuación (2): wv,1 = (Ov - Omin) / (Omax - Omin), normalizado a [0,1]."""
     omin, omax = Ov.min(), Ov.max()
@@ -150,6 +168,8 @@ def select_top_candidates(G: nx.Graph, virtual_points, weights: pd.Series,
         if total_weight > 0:
             scored.append({"lat": lat, "lon": lon, "W": total_weight})
 
+    if not scored:
+        return pd.DataFrame(columns=["lat", "lon", "W"])
     scored_df = pd.DataFrame(scored).sort_values("W", ascending=False)
     return scored_df.head(m).reset_index(drop=True)
 
@@ -232,8 +252,11 @@ def connect_new_waypoint(G: nx.Graph, new_lat, new_lon, attraction_radius_km=100
         if l_min_km < d <= attraction_radius_km:
             valid_length.append(n)
 
-    # Regla 3: ángulo mínimo entre segmentos adyacentes (evita conexiones
-    # demasiado cercanas en dirección, filtrando de a una a la vez)
+    # Regla 3: ángulo mínimo entre segmentos adyacentes (Fig. 5 del artículo).
+    # Se comprueba en los dos lugares donde se forman ángulos con el segmento
+    # nuevo: (a) en el propio punto nuevo, entre dos de sus conexiones; y
+    # (b) en el waypoint existente n, entre el segmento nuevo n-vo y cada
+    # segmento que ya salía de n.
     final_connections = []
     for n in valid_length:
         lat_n, lon_n = G.nodes[n]["lat"], G.nodes[n]["lon"]
@@ -244,6 +267,12 @@ def connect_new_waypoint(G: nx.Graph, new_lat, new_lon, attraction_radius_km=100
             if angle < theta_min_deg:
                 ok = False
                 break
+        if ok:
+            for j in G.neighbors(n):
+                lat_j, lon_j = G.nodes[j]["lat"], G.nodes[j]["lon"]
+                if angle_between(lat_n, lon_n, new_lat, new_lon, lat_j, lon_j) < theta_min_deg:
+                    ok = False
+                    break
         if ok:
             final_connections.append(n)
 
@@ -303,113 +332,361 @@ def force_prd(d_i_prd_km, r_prd_km, r_th_km, n4=1.0):
     return n4 * (1.0 / (d_i_prd_km - r_prd_km) - 1.0 / (r_th_km - r_prd_km))
 
 
-def update_position(lat, lon, total_force, direction_deg, x_step_km=1.0):
-    """Ecuaciones (18)-(19): actualiza la posición del punto virtual a lo
-    largo de la trayectoria de gran círculo, según la fuerza resultante.
-
-    total_force: |Fi|, magnitud de la fuerza resultante (puede ser inf).
-    direction_deg: phi_i, dirección de la fuerza resultante en grados.
-    """
-    if math.isinf(total_force):
-        # Fuerza infinita (choque con Lmin o zona PRD): no se mueve más en
-        # esa dirección; se trata en la práctica como límite duro.
-        return lat, lon
-
-    delta_d = x_step_km * math.exp(-1.0 / max(total_force, 1e-9))
-
-    phi = math.radians(direction_deg)
+def _destination(lat, lon, bearing_deg_, dist_km):
+    """Punto de llegada tras avanzar dist_km por gran círculo desde (lat, lon)
+    con rumbo bearing_deg_ (0° = norte, 90° = este). Ec. (19)."""
+    phi = math.radians(bearing_deg_)
     lat1 = math.radians(lat)
-    ang_dist = delta_d / EARTH_RADIUS_KM
+    ang_dist = dist_km / EARTH_RADIUS_KM
 
     lat2 = math.asin(
         math.sin(lat1) * math.cos(ang_dist) + math.cos(lat1) * math.sin(ang_dist) * math.cos(phi)
     )
-    lon1 = math.radians(lon)
-    lon2 = lon1 + math.atan2(
+    lon2 = math.radians(lon) + math.atan2(
         math.sin(phi) * math.sin(ang_dist) * math.cos(lat1),
         math.cos(ang_dist) - math.sin(lat1) * math.sin(lat2),
     )
-
     return math.degrees(lat2), math.degrees(lon2)
 
 
-def optimize_virtual_point(lat, lon, connections, flights_between, min_route_length_km,
-                            l_min_km=7.3, l_th_km=17.3, theta_min_deg=15,
-                            prd_zones=None, max_iterations=100, force_epsilon=1e-3,
-                            x_step_km=1.0):
-    """Bucle de optimización de posición para UN punto virtual (Ec. 13-19),
-    combinando las 4 fuerzas hasta que la posición converja o se agote el
-    número máximo de iteraciones.
+def update_position(lat, lon, total_force, direction_deg, x_step_km=1.0):
+    """Ecuaciones (18)-(19): actualiza la posición del punto virtual a lo
+    largo de la trayectoria de gran círculo, según la fuerza resultante.
 
-    connections: lista de waypoint_ids conectados a este punto (de connect_new_waypoint)
-    flights_between: dict {(waypoint_a, waypoint_b): num_vuelos_semana} usado en Fatt
-    prd_zones: lista opcional de dicts {"lat":, "lon":, "radius_km":} (zonas PRD)
+    total_force: |Fi|, magnitud de la fuerza resultante.
+    direction_deg: phi_i, rumbo de la fuerza resultante (0° = norte).
+    """
+    if math.isinf(total_force):
+        return lat, lon
+    delta_d = x_step_km * math.exp(-1.0 / max(total_force, 1e-9))   # Ec. (18)
+    return _destination(lat, lon, direction_deg, delta_d)
 
-    Devuelve: (lat_final, lon_final, historial_de_fuerzas)
+
+# ---------------------------------------------------------------------------
+# Geometría local auxiliar: plano tangente en km (este, norte)
+# ---------------------------------------------------------------------------
+
+# Las Ec. (15) y (17) devuelven +inf cuando el punto cruza un límite duro.
+# Un +inf no se puede sumar vectorialmente (el punto quedaría congelado), así
+# que dentro del bucle se usa un tope finito muy grande y, además, los pasos
+# que violarían el límite se rechazan (ver _feasible y optimize_virtual_point).
+BIG_FORCE = 1e6
+
+
+def _to_enu(lat0, lon0, lat, lon):
+    """Desplazamiento (este_km, norte_km) de (lat, lon) respecto a (lat0, lon0)."""
+    x = math.radians(lon - lon0) * math.cos(math.radians(lat0)) * EARTH_RADIUS_KM
+    y = math.radians(lat - lat0) * EARTH_RADIUS_KM
+    return x, y
+
+
+def _unit(x, y):
+    n = math.hypot(x, y)
+    return (x / n, y / n) if n > 1e-12 else (0.0, 0.0)
+
+
+def _closest_on_segment(p, a, b):
+    """Punto del segmento a-b más cercano a p (todos en coordenadas planas)."""
+    abx, aby = b[0] - a[0], b[1] - a[1]
+    l2 = abx * abx + aby * aby
+    if l2 < 1e-12:
+        return a
+    t = ((p[0] - a[0]) * abx + (p[1] - a[1]) * aby) / l2
+    t = max(0.0, min(1.0, t))
+    return (a[0] + t * abx, a[1] + t * aby)
+
+
+def _angle_deg(u, v):
+    """Ángulo (0-180°) entre dos vectores planos."""
+    nu, nv = math.hypot(*u), math.hypot(*v)
+    if nu < 1e-12 or nv < 1e-12:
+        return 180.0
+    c = (u[0] * v[0] + u[1] * v[1]) / (nu * nv)
+    return math.degrees(math.acos(max(-1.0, min(1.0, c))))
+
+
+def count_pair_flows(paths, connections, max_hops=3):
+    """f_aib de la Ec. (14): vuelos por semana que cruzan a y b con a lo sumo
+    max_hops saltos de separación en su ruta, es decir, los vuelos que
+    podrían desviarse por un waypoint nuevo conectado a ambos.
+
+    paths: iterable de rutas (listas de waypoint_id), una por vuelo.
+    Devuelve dict {(a, b): n_vuelos} para cada par de `connections`.
+    """
+    conns = set(connections)
+    flows = {}
+    for path in paths:
+        idx = {}
+        for pos, n in enumerate(path):
+            if n in conns and n not in idx:
+                idx[n] = pos
+        if len(idx) < 2:
+            continue
+        for a, b in itertools.combinations(sorted(idx), 2):
+            if abs(idx[a] - idx[b]) <= max_hops:
+                flows[(a, b)] = flows.get((a, b), 0) + 1
+    return flows
+
+
+def _prd_distance(rel_conns, zone_center_rel):
+    """Distancia mínima del centro de una zona PRD al punto virtual (origen) y
+    a los segmentos que lo unen con sus conexiones."""
+    d = math.hypot(*zone_center_rel)
+    for a_rel in rel_conns:
+        c = _closest_on_segment(zone_center_rel, (0.0, 0.0), a_rel)
+        d = min(d, math.hypot(zone_center_rel[0] - c[0], zone_center_rel[1] - c[1]))
+    return d
+
+
+def _node_xy(G, n):
+    return G.nodes[n]["lat"], G.nodes[n]["lon"]
+
+
+def _angles_ok(G, lat, lon, connections, theta_min_deg):
+    """True si todos los ángulos entre segmentos adyacentes son >= theta_min:
+    en cada waypoint existente `a` (segmento nuevo vs. segmentos previos) y en
+    el propio punto nuevo (entre pares de sus segmentos)."""
+    pos = {a: _node_xy(G, a) for a in connections}
+    for a in connections:
+        vo = _to_enu(*pos[a], lat, lon)
+        for j in G.neighbors(a):
+            if _angle_deg(vo, _to_enu(*pos[a], *_node_xy(G, j))) < theta_min_deg:
+                return False
+    rel = {a: _to_enu(lat, lon, *pos[a]) for a in connections}
+    for a, b in itertools.combinations(connections, 2):
+        if _angle_deg(rel[a], rel[b]) < theta_min_deg:
+            return False
+    return True
+
+
+def _feasible(G, lat, lon, connections, start, l_min_km, r_km, prd_zones, max_move_km,
+              theta_min_deg=15.0):
+    """Restricciones duras: Ec. (11) rango de movimiento, longitud de segmento
+    en (Lmin, r], ángulo mínimo entre segmentos, y Ec. (12) sin intersección
+    con zonas PRD. El artículo exige que se cumplan estrictamente; las fuerzas
+    de las Ec. (15)-(17) las empujan, pero con n1 = n2 = n3 = 1 la atracción
+    (f * km, de miles) las supera con facilidad, por eso además se imponen aquí."""
+    if great_circle_distance_km(start[0], start[1], lat, lon) > max_move_km:
+        return False
+    rel = []
+    for a in connections:
+        la, loa = _node_xy(G, a)
+        l = great_circle_distance_km(lat, lon, la, loa)
+        if l <= l_min_km or l > r_km:
+            return False
+        rel.append(_to_enu(lat, lon, la, loa))
+    for z in prd_zones:
+        c = _to_enu(lat, lon, z["lat"], z["lon"])
+        if _prd_distance(rel, c) <= z["radius_km"]:
+            return False
+    return _angles_ok(G, lat, lon, connections, theta_min_deg)
+
+
+def pair_route_cost(G, lat, lon, connections, pair_flows):
+    """Ec. (10) restringida a los vuelos que pasarían por el nuevo punto:
+    suma de f_ab * (l_ai + l_ib) en km-vuelo por semana."""
+    cost = 0.0
+    for a, b in itertools.combinations(connections, 2):
+        f = pair_flows.get((a, b), pair_flows.get((b, a), 0))
+        if f <= 0:
+            continue
+        l_ai = great_circle_distance_km(lat, lon, *_node_xy(G, a))
+        l_ib = great_circle_distance_km(lat, lon, *_node_xy(G, b))
+        cost += f * (l_ai + l_ib)
+    return cost
+
+
+def total_force(G, lat, lon, connections, pair_flows, l_min_km=7.3, l_th_km=None,
+                theta_min_deg=15.0, prd_zones=None, n1=1.0, n2=1.0, n3=1.0, n4=1.0):
+    """Fuerza resultante F_i sobre el punto virtual (Ec. 13), como vector
+    (fx_este, fy_norte) en km-equivalentes. Suma las cuatro componentes:
+
+      Fatt    (Ec. 14): atrae el punto hacia la recta a-b de la ruta óptima,
+                        con magnitud n1 * f_aib * (l_aib - d_ab).
+      Flength (Ec. 15): lo aleja de cada vecino a < Lth.
+      Fangle  (Ec. 16): ensancha cualquier ángulo < theta_min, tanto en el
+                        propio punto (entre dos de sus segmentos) como en cada
+                        waypoint existente a donde llega un segmento nuevo.
+      FPRD    (Ec. 17): lo aleja de zonas prohibidas/restringidas/peligrosas.
+    """
+    if l_th_km is None:
+        l_th_km = l_min_km + 10.0           # Lth = Lmin + 10 km (Sec. 4.3)
+    prd_zones = prd_zones or []
+    fx = fy = 0.0
+
+    pos = {a: _node_xy(G, a) for a in connections}
+    rel = {a: _to_enu(lat, lon, *pos[a]) for a in connections}
+
+    # --- Atracción de la ruta óptima (Ec. 14) ---
+    for a, b in itertools.combinations(connections, 2):
+        f_ab = pair_flows.get((a, b), pair_flows.get((b, a), 0))
+        if f_ab <= 0:
+            continue
+        l_aib = (great_circle_distance_km(lat, lon, *pos[a])
+                 + great_circle_distance_km(lat, lon, *pos[b]))
+        d_ab = great_circle_distance_km(*pos[a], *pos[b])
+        mag = force_attraction(l_aib, d_ab, f_ab, n1)
+        if mag <= 0:
+            continue
+        cx, cy = _closest_on_segment((0.0, 0.0), rel[a], rel[b])
+        ux, uy = _unit(cx, cy)
+        fx += mag * ux
+        fy += mag * uy
+
+    # --- Repulsión por longitud de segmento (Ec. 15) ---
+    for a in connections:
+        l = great_circle_distance_km(lat, lon, *pos[a])
+        mag = min(force_length(l, l_min_km, l_th_km, n2), BIG_FORCE)
+        if mag > 0:
+            ux, uy = _unit(-rel[a][0], -rel[a][1])      # se aleja del vecino
+            fx += mag * ux
+            fy += mag * uy
+
+    # --- Repulsión por ángulo (Ec. 16) ---
+    # (a) en cada waypoint existente `a`: ángulo entre el segmento nuevo a-vo y
+    #     cada segmento ya existente a-j (Fig. 5 del artículo).
+    for a in connections:
+        vo = _to_enu(*pos[a], lat, lon)                 # a -> vo
+        for j in G.neighbors(a):
+            j_vec = _to_enu(*pos[a], *_node_xy(G, j))   # a -> j
+            theta = _angle_deg(vo, j_vec)
+            mag = force_angle(theta, theta_min_deg, n3)
+            if mag > 0:
+                cross = j_vec[0] * vo[1] - j_vec[1] * vo[0]
+                # vo está a la izquierda (cross > 0) de j: lo empujamos más a la
+                # izquierda; si no, a la derecha. Así el ángulo crece.
+                px, py = (-vo[1], vo[0]) if cross >= 0 else (vo[1], -vo[0])
+                ux, uy = _unit(px, py)
+                fx += mag * ux
+                fy += mag * uy
+    # (b) en el propio punto: ángulo entre dos de sus segmentos nuevos. Acercarse
+    #     al segmento a-b es lo que abre el ángulo que subtiende en vo.
+    for a, b in itertools.combinations(connections, 2):
+        theta = _angle_deg(rel[a], rel[b])
+        mag = force_angle(theta, theta_min_deg, n3)
+        if mag > 0:
+            cx, cy = _closest_on_segment((0.0, 0.0), rel[a], rel[b])
+            ux, uy = _unit(cx, cy)
+            fx += mag * ux
+            fy += mag * uy
+
+    # --- Repulsión de zonas PRD (Ec. 17) ---
+    rel_list = list(rel.values())
+    for z in prd_zones:
+        c = _to_enu(lat, lon, z["lat"], z["lon"])
+        d = _prd_distance(rel_list, c)
+        mag = min(force_prd(d, z["radius_km"], z["radius_km"] + 20.0, n4), BIG_FORCE)
+        if mag > 0:
+            ux, uy = _unit(-c[0], -c[1])                # desde el centro hacia vo
+            fx += mag * ux
+            fy += mag * uy
+
+    return fx, fy
+
+
+def optimize_virtual_point(G, lat, lon, connections, pair_flows, l_min_km=7.3,
+                           attraction_radius_km=150.0, theta_min_deg=15.0,
+                           prd_zones=None, max_move_km=50.0, x_step_km=1.0,
+                           max_iterations=300, force_epsilon=1e-3, pos_tol_km=1e-3,
+                           max_perturbations=3, cost_tol=1e-3, perturb_km=5.0, seed=0):
+    """Optimiza la posición de UN waypoint nuevo con la topología fija
+    (Sec. 4.2-4.3): mueve el punto bajo la fuerza resultante (Ec. 13-19) hasta
+    el equilibrio, y cuando queda en equilibrio aplica la perturbación
+    estocástica descrita en el artículo para escapar de mínimos locales.
+
+    Los límites duros (Lmin, radio r, PRD, rango de movimiento) se imponen
+    rechazando pasos que los violen (el +inf de las Ec. 15 y 17).
+
+    Devuelve dict: lat, lon, cost0, cost, iterations, perturbations, feasible.
+    `feasible` es False si la posición de partida ya violaba un límite duro.
     """
     prd_zones = prd_zones or []
-    force_history = []
+    rng = np.random.default_rng(seed)
+    start = (lat, lon)
+    kw = dict(l_min_km=l_min_km, theta_min_deg=theta_min_deg, prd_zones=prd_zones)
 
-    for iteration in range(max_iterations):
-        fx, fy = 0.0, 0.0  # componentes de fuerza resultante (aprox. cartesiana local)
+    def ok(la, lo):
+        return _feasible(G, la, lo, connections, start, l_min_km, attraction_radius_km,
+                         prd_zones, max_move_km, theta_min_deg)
 
-        # --- Fuerza de atracción de la ruta óptima (Ec. 14) ---
-        conns = list(connections)
-        for a, b in itertools.combinations(conns, 2):
-            l_ai = great_circle_distance_km(lat, lon, *_coords(a))
-            l_ib = great_circle_distance_km(lat, lon, *_coords(b))
-            l_aib = l_ai + l_ib
-            f_aib = flights_between.get((a, b), flights_between.get((b, a), 0))
-            f_att = force_attraction(l_aib, min_route_length_km, f_aib)
-            bearing = bearing_deg(lat, lon, *_coords(a))
-            fx += f_att * math.cos(math.radians(bearing))
-            fy += f_att * math.sin(math.radians(bearing))
+    cost0 = pair_route_cost(G, lat, lon, connections, pair_flows)
+    start_ok = ok(lat, lon)
+    best = (cost0, lat, lon) if start_ok else (float("inf"), lat, lon)
+    eq_costs, n_pert, it = [], 0, 0
 
-        # --- Fuerza de repulsión por longitud (Ec. 15) ---
-        for a in conns:
-            l_ia = great_circle_distance_km(lat, lon, *_coords(a))
-            f_len = force_length(l_ia, l_min_km, l_th_km)
-            if math.isinf(f_len):
-                return lat, lon, force_history + [float("inf")]
-            bearing = bearing_deg(*_coords(a), lat, lon)  # se aleja del vecino
-            fx += f_len * math.cos(math.radians(bearing))
-            fy += f_len * math.sin(math.radians(bearing))
+    while it < max_iterations:
+        it += 1
+        fx, fy = total_force(G, lat, lon, connections, pair_flows, **kw)
+        F = math.hypot(fx, fy)
 
-        # --- Fuerza de repulsión por ángulo (Ec. 16) ---
-        for a, b in itertools.combinations(conns, 2):
-            theta = angle_between(lat, lon, *_coords(a), *_coords(b))
-            f_ang = force_angle(theta, theta_min_deg)
-            fx += f_ang  # aproximación simplificada de dirección (documentado)
+        moved = False
+        if F >= force_epsilon:
+            direction = math.degrees(math.atan2(fx, fy))    # rumbo: 0° = norte
+            step = x_step_km
+            for _ in range(8):                              # rechaza pasos inviables
+                new_lat, new_lon = update_position(lat, lon, F, direction, step)
+                if ok(new_lat, new_lon) or not ok(lat, lon):
+                    moved = great_circle_distance_km(lat, lon, new_lat, new_lon) > pos_tol_km
+                    break
+                step /= 2.0
+            else:
+                new_lat, new_lon = lat, lon
+            if moved:
+                lat, lon = new_lat, new_lon
+                if ok(lat, lon):
+                    c = pair_route_cost(G, lat, lon, connections, pair_flows)
+                    if c < best[0]:
+                        best = (c, lat, lon)
+                continue
 
-        # --- Fuerza de repulsión de zonas PRD (Ec. 17) ---
-        for zone in prd_zones:
-            d = great_circle_distance_km(lat, lon, zone["lat"], zone["lon"])
-            r_th = zone["radius_km"] + 20
-            f_prd = force_prd(d, zone["radius_km"], r_th)
-            if math.isinf(f_prd):
-                return lat, lon, force_history + [float("inf")]
-            bearing = bearing_deg(zone["lat"], zone["lon"], lat, lon)
-            fx += f_prd * math.cos(math.radians(bearing))
-            fy += f_prd * math.sin(math.radians(bearing))
+        # Equilibrio (|F| < eps, paso < tolerancia o bloqueado por un límite duro)
+        c = pair_route_cost(G, lat, lon, connections, pair_flows)
+        if ok(lat, lon) and c < best[0]:
+            best = (c, lat, lon)
+        if eq_costs and abs(c - eq_costs[-1]) <= cost_tol * max(abs(eq_costs[-1]), 1e-9):
+            break                                           # estable: dos equilibrios iguales
+        eq_costs.append(c)
+        if n_pert >= max_perturbations:
+            break
+        n_pert += 1                                         # perturbación estocástica
+        for _ in range(20):
+            ang = rng.uniform(0, 360)
+            mag = rng.uniform(0.2, 1.0) * perturb_km
+            cand = _destination(best[1], best[2], ang, mag)
+            if ok(*cand):
+                lat, lon = cand
+                break
 
-        total_force = math.hypot(fx, fy)
-        force_history.append(total_force)
-
-        if total_force < force_epsilon:
-            break  # equilibrio alcanzado (Ec. 18: el paso tiende a 0)
-
-        direction = math.degrees(math.atan2(fy, fx))
-        lat, lon = update_position(lat, lon, total_force, direction, x_step_km)
-
-    return lat, lon, force_history
+    final_ok = best[0] != float("inf")
+    return {"lat": best[1], "lon": best[2], "cost0": cost0, "cost": best[0] if final_ok else cost0,
+            "iterations": it, "perturbations": n_pert, "feasible": final_ok}
 
 
-def _coords(waypoint_id):
-    """Función auxiliar; se reemplaza en tiempo de ejecución (ver main.py)
-    con una consulta real al grafo. Aquí se deja como placeholder para que
-    optimize_virtual_point() sea testeable de forma aislada si se inyecta
-    un lookup adecuado (ver tests en main.py)."""
-    raise NotImplementedError(
-        "Asigna apf_growth._coords antes de llamar a optimize_virtual_point, "
-        "por ejemplo: apf_growth._coords = lambda n: (G.nodes[n]['lat'], G.nodes[n]['lon'])"
-    )
+def validate_new_waypoint(G, lat, lon, connections, l_min_km=7.3, attraction_radius_km=150.0,
+                          theta_min_deg=15.0, prd_zones=None):
+    """Comprueba las restricciones del artículo sobre un waypoint nuevo ya
+    colocado (Sec. 4.1.2 y Ec. 12). Devuelve la lista de violaciones (vacía
+    si cumple todo)."""
+    prd_zones = prd_zones or []
+    problems = []
+    pos = {a: _node_xy(G, a) for a in connections}
+    rel = {a: _to_enu(lat, lon, *pos[a]) for a in connections}
+
+    for a in connections:
+        l = great_circle_distance_km(lat, lon, *pos[a])
+        if not (l_min_km < l <= attraction_radius_km):
+            problems.append(f"longitud {a}: {l:.1f} km fuera de ({l_min_km}, {attraction_radius_km}]")
+        vo = _to_enu(*pos[a], lat, lon)
+        for j in G.neighbors(a):
+            th = _angle_deg(vo, _to_enu(*pos[a], *_node_xy(G, j)))
+            if th < theta_min_deg:
+                problems.append(f"ángulo en {a} entre segmento nuevo y {a}-{j}: {th:.1f}°")
+    for a, b in itertools.combinations(connections, 2):
+        th = _angle_deg(rel[a], rel[b])
+        if th < theta_min_deg:
+            problems.append(f"ángulo en el nuevo punto entre {a} y {b}: {th:.1f}°")
+    for z in prd_zones:
+        c = _to_enu(lat, lon, z["lat"], z["lon"])
+        if _prd_distance(list(rel.values()), c) <= z["radius_km"]:
+            problems.append("intersecta una zona PRD")
+    return problems

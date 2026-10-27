@@ -45,6 +45,19 @@ def generate_waypoint_capacity(waypoint_ids, per_hour=DEFAULT_WAYPOINT_CAPACITY_
     return pd.DataFrame(rows)
 
 
+def extend_waypoint_capacity(cap_df, new_waypoint_ids, per_hour=DEFAULT_WAYPOINT_CAPACITY_PER_HOUR,
+                              levels=None, n_slots=N_TIME_SLOTS):
+    """Añade filas de capacidad para waypoints recién creados por el nivel
+    superior. Sin esto, el MILP no encuentra capacidad para el nodo nuevo
+    (la toma como 0) y penaliza cualquier vuelo que lo use, anulando el
+    crecimiento de la red."""
+    new_ids = [n for n in new_waypoint_ids if n not in set(cap_df["waypoint_id"])]
+    if not new_ids:
+        return cap_df
+    extra = generate_waypoint_capacity(new_ids, per_hour=per_hour, levels=levels, n_slots=n_slots)
+    return pd.concat([cap_df, extra], ignore_index=True)
+
+
 def generate_airport_capacity(airport_ids, dep_per_hour=30, arr_per_hour=30,
                                total_per_hour=None, n_slots=N_TIME_SLOTS,
                                overrides=None):

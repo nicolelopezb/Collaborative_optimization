@@ -51,9 +51,30 @@ outputs/        <- Mapas, gráficas, resultados de cada corrida
 notebooks/      <- Para exploración y análisis visual
 ```
 
-## Próximas fases (aún por construir)
+## Estado de las fases
 
-- Fase 3: K-caminos más cortos (`networkx.shortest_simple_paths`)
-- Fase 4: Modelo MILP de asignación (PuLP), ecuaciones (32)-(40) del artículo
-- Fase 5: Crecimiento de red vía campos de potencial (APF), ecuaciones (1)-(19)
-- Fase 6: Ciclo iterativo completo + índices de red, ecuaciones (41)-(49)
+- Fases 1-4 (red, demanda, K-caminos, MILP del nivel inferior): hechas.
+- Fase 5 (crecimiento de red + APF, Ec. 1-19): hecha. Los waypoints nuevos se
+  conectan (vecino relativo, longitud, ángulo) y luego su posición se optimiza
+  con las fuerzas de las Ec. 13-17 y el paso de las Ec. 18-19, manteniendo la
+  topología fija. Lmin, el radio r, el ángulo mínimo y las zonas PRD son
+  restricciones duras; se aplica además la perturbación estocástica del artículo.
+- Fase 6 (ciclo iterativo): hecha, con los dos criterios de convergencia de la
+  Sec. 3.2 (I: variación de exceso y distancia; II: exceso horario <= 5 % de la
+  capacidad) y el borrado de waypoints sin tráfico (4.1.3).
+- Pendiente: índices de red (Ec. 41-49), escenarios 1/2/3 comparados, análisis
+  de sensibilidad, tiempos de paso por waypoint (el artículo los obtiene por
+  simulación), varios niveles de vuelo y zonas PRD reales de Colombia
+  (`--prd-zones` acepta un CSV lat,lon,radius_km).
+
+## Uso del ciclo completo
+
+```
+python src/main.py --max-iterations 8 --wp-capacity 20 --m-new-nodes 3
+python tests/test_apf_and_convergence.py
+```
+
+Notas: `--wp-capacity` es un supuesto (no hay dato público de capacidad); con
+5 aeronaves/hora el Criterio II no se alcanza porque el exceso inicial es muy
+grande. Los aeropuertos no cuentan como waypoints para la capacidad: su límite
+son las capacidades Q de aeropuerto (Ec. 38-40). Requiere `pulp==2.9.0`.

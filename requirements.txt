@@ -5,6 +5,6 @@ geopandas
 shapely
 matplotlib
 folium
-pulp
+pulp==2.9.0   # PuLP 3+/4 cambió LpVariable y rompe milp_model.py
 pdfplumber
 
